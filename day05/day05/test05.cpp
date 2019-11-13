@@ -43,13 +43,4 @@
 //	return 0;
 //}
 
-//连续子数组中和最大的值
-//#include <iostream>
-//using namespace std;
-//
-//int main()
-//{
-//
-//	system("pause");
-//	return 0;
-//}
+
