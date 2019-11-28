@@ -25,28 +25,68 @@
 
 
 
-#include <stdlib.h>
-#include <stdio.h>
+//#include <stdlib.h>
+//#include <stdio.h>
+//
+//int main()
+//{
+//	int month;
+//	scanf("%d", &month);
+//
+//	while (month)
+//	{
+//		int i, sum;
+//		int a = 1, b = 1;
+//		if (month > 2)
+//		{
+//			for (i = 3; i <= month; i++)
+//			{
+//				sum = a + b;
+//				a = b;
+//				b = sum;
+//			}
+//		}
+//		printf("%d", sum);
+//	}
+//
+//	system("pause");
+//	return 0;
+//}
+
+#include<iostream>
+using namespace std;
+
+int num = 0;
+void fun(int n) 
+{
+	if (n < 2) //空瓶数小于2，无法兑换
+	{
+		return;
+	}
+	else 
+	{
+		if (n == 2) //空瓶数等于2，可借一瓶喝完后，3空瓶兑换一瓶满的归还
+		{
+			num++;
+		}
+
+		if (n >= 3) //空瓶数大于3可兑换，兑换后空瓶数量n-3
+		{           //由于换来的汽水喝完后又得1个空瓶，总空瓶数为n+1;实际换一次后，空瓶数量变为n-2
+			num++;  //先兑换一次喝完，再继续看剩余空余空瓶是否满足
+			fun(n - 2);
+		}
+	}
+}
+
 
 int main()
 {
-	int month;
-	scanf("%d", &month);
-
-	while (month)
+	int n; //空瓶总数
+	while (cin >> n) 
 	{
-		int i, sum;
-		int a = 1, b = 1;
-		if (month > 2)
-		{
-			for (i = 3; i <= month; i++)
-			{
-				sum = a + b;
-				a = b;
-				b = sum;
-			}
-		}
-		printf("%d", sum);
+		fun(n);
+		cout << num << endl; //兑换次数
+		num = 0; //每输入一次空瓶，将上一次数据置0
 	}
 
 	system("pause");
