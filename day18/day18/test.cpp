@@ -34,3 +34,54 @@
 //    system("pause");
 //	return 0;
 //}
+
+//解法二：使用宏
+//#include <iostream> 
+//#include <string> 
+//
+//#define ADD(x, y) ((x) + (y))  //任意两边和
+//#define CMP(x, y) ((x) > (y))  //任意两边和与第三边进行比较
+//
+//int main()
+//{ 
+//	double a, b, c; 
+//	while (std::cin >> a >> b >> c) 
+//	{ 
+//		//对两边进行求和与第三遍进行比较 
+//		if (CMP(ADD(a, b), c) && CMP(ADD(b, c), a) && CMP(ADD(a, c), b))
+//		{ 
+//			std::cout << "Yes" << std::endl;
+//		}
+//		else 
+//		{
+//			std::cout << "No" << std::endl;
+//		}
+//    }
+//
+//	system("pause");
+//	return 0;
+//}
+
+#include <iostream> 
+#include <string> 
+
+using namespace std;
+
+#define ADD(x, y) ((x) + (y))  //任意两边和
+#define CMP(x, y) ((x) > (y))  //任意两边和与第三边进行比较
+
+int main()
+{
+	double a, b, c;
+	while (cin >> a >> b >> c)
+	{
+		//对两边进行求和与第三遍进行比较 
+		if (CMP(ADD(a, b), c) && CMP(ADD(b, c), a) && CMP(ADD(a, c), b))
+			cout << "Yes" << endl;
+		else
+			cout << "No" << endl;
+	}
+
+	system("pause");
+	return 0;
+}
