@@ -180,78 +180,77 @@
 
 
 //淘宝网店
-//思路：同年同月直接计算天数算利润
-//同年不同月，先算整月的利润，再算不满整月，天的利润
-//不同年，先算整年利润，再算整月利润，再算天的利润
+//思路：直接算出一整年的钱数，再计算两个月各自的
 
-//#include <iostream>
-//using namespace std;
-//
-//int Money(int year1, int month1, int day1, int year2, int month2, int day2)
-//{
-//	int SumMoney = 0;
-//	int tmp = 0;
-//	int month_day[12] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
-//
-//	int year = year1;
-//	for (int i = year1; i < year2; i++)
-//	{
-//		if ((i % 4 == 0 && i % 100 != 0) || i % 400 == 0)
-//			SumMoney += 580;
-//		else SumMoney += 579;
-//	}
-//
-//	for (int i = 0; i < month1; i++)
-//	{
-//		if (i == month1 - 1) 
-//			tmp = day1 - 1;
-//		else 
-//			tmp = month_day[i];
-//
-//		if (i != 1 && i != 2 && i != 4 && i != 6 && i != 10)
-//		{
-//			SumMoney -= tmp * 2;
-//		}
-//		else 
-//			SumMoney -= tmp;
-//	}
-//
-//	for (int i = 0; i < month2; i++)
-//	{
-//		if (i == month2 - 1) 
-//			tmp = day2;
-//		else
-//			tmp = month_day[i];
-//
-//		if (i != 1 && i != 2 && i != 4 && i != 6 && i != 10)
-//		{
-//			SumMoney += tmp * 2;
-//		}
-//		else 
-//			SumMoney += tmp;
-//	}
-//
-//	return SumMoney;
-//
-//}
-//
-//
-//int main() 
-//{
-//	int year1, year2, month1, month2, day1, day2;
-//	int SumMoney = 0;
-//
-//	while (cin >> year1 >> month1 >> day1 >> year2 >> month2 >> day2)
-//	{
-//		SumMoney = Money(year1, month1, day1, year2, month2, day2);
-//		cout << SumMoney << endl;
-//	}
-//
-//	system("pause");
-//	return 0;
-//}
+#include <iostream>
+using namespace std;
 
-////斐波那契凤尾
+int Money(int year1, int month1, int day1, int year2, int month2, int day2)
+{
+	int SumMoney = 0;
+	int tmp = 0;
+	int month_day[12] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 }; // 平年每月的天数
+
+	int year = year1;
+	for (int i = year1; i < year2; i++)
+	{
+		if ((i % 4 == 0 && i % 100 != 0) || i % 400 == 0)
+			SumMoney += 580; //闰年 挣钱580
+		else SumMoney += 579; //平年 挣钱579
+	}
+
+	for (int i = 0; i < month1; i++)
+	{
+		if (i == month1 - 1)  //不足一月
+			tmp = day1 - 1;
+		else 
+			tmp = month_day[i];
+
+		if (i != 1 && i != 2 && i != 4 && i != 6 && i != 10) //月数不为1、3、5、7、9、11
+		{
+			SumMoney -= tmp * 2; // * 2
+		}
+		else 
+			SumMoney -= tmp; // * 1
+	}
+
+	for (int i = 0; i < month2; i++)
+	{
+		if (i == month2 - 1)  //不足一月
+			tmp = day2;
+		else
+			tmp = month_day[i];
+
+		if (i != 1 && i != 2 && i != 4 && i != 6 && i != 10)
+		{
+			SumMoney += tmp * 2;
+		}
+		else 
+			SumMoney += tmp;
+	}
+
+	return SumMoney;
+
+}
+
+
+int main() 
+{
+	int year1, year2, month1, month2, day1, day2;
+	int SumMoney = 0;
+
+	while (cin >> year1 >> month1 >> day1 >> year2 >> month2 >> day2)
+	{
+		SumMoney = Money(year1, month1, day1, year2, month2, day2);
+		cout << SumMoney << endl;
+	}
+
+	system("pause");
+	return 0;
+}
+
+//////斐波那契凤尾
+////斐波那契：1 1 2 3 5 8 13 21 ...
 //#include <iostream>
 //using namespace std;
 //
@@ -274,7 +273,7 @@
 //		if (num < 26)
 //			cout << Fibonacci[num] << endl;
 //		else
-//			printf("%06ld\n", Fibonacci[num]);
+//			printf("%06d\n", Fibonacci[num]);//后六位输出
 //	}
 //
 //	system("pause");
