@@ -208,3 +208,42 @@
 //	system("pause");
 //	return 0;
 //}
+
+//乒乓球赛
+#include<iostream>
+#include<string>
+#include<map>
+using namespace std;
+
+int main()
+{
+	string s1, s2;
+	while (cin >> s1 >> s2)
+	{
+		bool status = true;
+		map<char, int> str1, str2;
+		for (int i = 0; i < s1.size(); i++)
+			str1[s1[i]]++;
+
+		for (int j = 0; j < s2.size(); j++)
+			str2[s2[j]]++;
+
+		map<char, int>::iterator it = str2.begin();
+		while (it != str2.end())
+		{
+			if (str1[it->first] < it->second) //str1 < str2长度则退出，否则继续往下走
+			{
+				status = false;
+				break;
+			}
+			++it;
+		}
+
+		if (status== true )
+			cout << "Yes" << endl;
+		else
+			cout << "No" << endl;
+	}
+	system("pause");
+	return 0;
+}
