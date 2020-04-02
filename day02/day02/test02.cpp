@@ -151,3 +151,151 @@
 //	system("pause");
 //	return 0;
 //}
+
+//非递归 斐波那契数列
+//#include <iostream>
+//using namespace std;
+//
+//int main()
+//{
+//	int n;
+//	while (cin >> n)
+//	{
+//		int a = 1;
+//		int b = 1;
+//		int c = 0;
+//		if (n == 1 || n == 2)
+//			c = 1;
+//		else
+//		{
+//			for (int i = 3; i <= n; i++)
+//			{
+//				c = a + b;
+//				a = b;
+//				b = c;
+//			}
+//		}
+//		cout << c << endl;
+//	}
+//	system("pause");
+//	return 0;
+//}
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+//#define F(X, Y) ((X)+(Y)) 
+//
+//int main()
+//{
+//	int a = 3, b = 4;
+//	printf("%d\n", F(a++, b++));
+//
+//	system("pause");
+//	return 0;
+//}
+
+//#pragma pack(4)
+//
+//int main()
+//{
+//	struct test1
+//	{
+//		short a;
+//	    char d;
+//		long b;
+//		long c;
+//	};
+//
+//	struct test2
+//	{
+//		long b;
+//		short c;
+//		char d;
+//		long a;
+//	};
+//
+//	struct test3
+//	{
+//		short c;
+//		long b;
+//		char d;
+//		long a;
+//	};
+//	 
+//	printf("%d\n", sizeof(test1)); //12  2 2 4 4
+//	printf("%d\n", sizeof(test2)); //12  4 2 2 4
+//	printf("%d\n", sizeof(test3)); //16  4 4 4 4
+//
+//	system("pause");
+//	return 0;
+//}
+
+//int fun(int x, int y)
+//{
+//	static int m = 0;
+//	static int i = 2;
+//	i += m + 1;
+//	m = i + x + y;
+//	return m;
+//}
+//
+//int main()
+//{
+//	int j = 4;
+//	int m = 1;
+//	int k;
+//	k = fun(j, m);
+//	printf("%d", k);//8
+//
+//	k = fun(j, m);
+//	printf("%d", k);//17
+//
+//	system("pause");
+//	return 0;
+//}
+
+//int Numberof1(int n)
+//{
+//	int count = 0;
+//	while (n)
+//	{
+//		++count;
+//		n = (n - 1)&n;
+//	} 
+//	return count;
+//}
+//
+//int main()
+//{
+//	printf("%d\n", Numberof1(2020));
+//	system("pause");
+//	return 0;
+//}
+
+//int Change(int *px)
+//{
+//	int y = 8;
+//	y = y - *px;
+//	px = &y;
+//	return 0;
+//}
+//int main()
+//{
+//	int xx = 3;
+//	int *py = &xx;  //3
+//	Change(py);
+//	printf("%d", *py); //3
+//}
+//
+//#define F(r) r*r
+//
+//int main()
+//{
+//	int a = 1, b = 2;
+//	int t = F(a + b); //1*1 + 2*2 = 5
+//	printf("%d\n", t);
+//
+//	system("pause");
+//	return 0;
+//}
