@@ -299,3 +299,105 @@
 //	system("pause");
 //	return 0;
 //}
+
+//int x = 3;
+//void inc()
+//{
+//	static int x = 1;
+//	x *= (x + 1);
+//	printf("%d", x);
+//	return;
+//}
+//
+//int main()
+//{
+//	int i;
+//	for (i = 1; i < x; i++)
+//		inc();
+//	
+//	system("pause");
+//	return 0;
+//}
+
+//int a = 1;
+//void test()
+//{
+//	int a = 2;
+//	a += 1;
+//}
+//
+//int main()
+//{
+//	test();
+//	printf("%d", a);
+//	system("pause");
+//	return 0;
+//}
+
+//#define MOD(x, y) x%y
+//
+//int main()
+//{
+//	int a = 13, b = 94;
+//	printf("%d", MOD(b, a+4));
+//	system("pause");
+//	return 0;
+//}
+
+//int main()
+//{
+//	int x = 0;
+//	switch (++x)
+//	{
+//	case 0: 
+//		++x;
+//	case 1:
+//		++x;
+//	case 2:
+//		++x;
+//	}
+//	printf("%d", x);
+//	system("pause");
+//}
+
+void Swap(int* p1, int* p2)
+{
+	int tmp = *p1;
+	*p1 = *p2;
+	*p2 = tmp;
+}
+
+
+void BubbleSort(int* arr, int len)
+{
+	int end = len - 1;
+	while (end > 0)
+	{
+		for (int i = 0; i < end; ++i)
+		{
+			if (arr[i] > arr[i + 1])
+				Swap(&arr[i], &arr[i + 1]);
+		}
+		--end;
+	}
+}
+
+void Little_k(int* arr, int len, int k)
+{
+	BubbleSort(arr, len);
+	for (int i = 0; i < k; ++i)
+	{
+		printf("%d ", arr[i]);
+	}
+	printf("\n");
+}
+
+
+int main()
+{
+	int arr[] = { 12, 45, 89, 12, 6, 9, 4 };
+	int len = sizeof(arr) / sizeof(arr[0]);
+	Little_k(arr, len, 3);
+	system("pause");
+	return 0;
+}
