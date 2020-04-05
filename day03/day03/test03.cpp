@@ -178,6 +178,7 @@
 //	return 0;
 //}
 
+//¹şÏ£
 char firstNotRepeate(char* str)
 {
 	const int size = 256;//±íÊ¾
