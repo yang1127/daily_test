@@ -179,38 +179,180 @@
 //}
 
 //哈希
-char firstNotRepeate(char* str)
-{
-	const int size = 256;//表示
-	int hashTable[size];
-	if (str == NULL) 
-		return '\0';
+////第一个不重复出现字符
+//char firstNotRepeate(char* str)
+//{
+//	const int size = 256;
+//	int hashTable[size];
+//	if (str == NULL) 
+//		return '\0';
+//
+//	for (int i = 0; i < size; i++) 
+//		hashTable[i] = 0;
+//
+//	char *pHashKey = str;
+//	while (*(pHashKey) != '\0')
+//		hashTable[*(pHashKey++)]++;
+//
+//	pHashKey = str;
+//	while (*(pHashKey) != '\0')
+//	{
+//		if (hashTable[*(pHashKey)] == 1)
+//		{
+//			printf("%c\n", *(pHashKey));
+//			break;
+//		} 
+//		pHashKey++;
+//	} 
+//	return '\0';
+//}
+//
+//int main()
+//{
+//	char str[] = "abaccdeff";
+//	firstNotRepeate(str);
+//
+//	system("pause");
+//	return 0;
+//}
+//
+//第一个重复出现字符
+//char firstNotRepeate(char* str)
+//{
+//	const int size = 256;//表示
+//	int hashTable[size];
+//	if (str == NULL)
+//		return '\0';
+//
+//	for (int i = 0; i < size; i++)
+//		hashTable[i] = 0;
+//
+//	char *pHashKey = str;
+//	while (*(pHashKey) != '\0')
+//		hashTable[*(pHashKey++)]++;
+//
+//	pHashKey = str;
+//	while (*(pHashKey) != '\0')
+//	{
+//		if (hashTable[*(pHashKey)] == 2)
+//		{
+//			printf("%c\n", *(pHashKey));
+//			break;
+//		}
+//		pHashKey++;
+//	}
+//	return '\0';
+//}
+//
+//int main()
+//{
+//	char str[] = "qywyertdd";
+//	firstNotRepeate(str);
+//
+//	system("pause");
+//	return 0;
+//}
 
-	for (int i = 0; i < size; i++) 
-		hashTable[i] = 0;
+////只出现一次的数字
+//#include<stdio.h>
+//#include<stdlib.h>
+//#include<assert.h>
+//
+//void first_num(int* str, int len)
+//{
+//	assert(str); 
+//	int asc[10] = { 0 }; //创建一个十个元素的数组，因为原数组元素的大小都只为0~9的元素
+//	for (int i = 0; i < len; i++)
+//		asc[str[i]]++;    //将原数组的元素作为新建数组的下标，并自增。如果原数组有相同元素，说明在新建数组对应的位置处的值会不断加1
+//
+//	printf("出现一次的两数为:\n");
+//	for (int i = 0; i < len; i++)
+//	{
+//		if (asc[str[i]] == 1)//输出条件，只要新建数组的值仍为1，说明原数组中该元素只有一个
+//			printf("%d ", str[i]);
+//	}
+//}
+//
+//int main()
+//{
+//	int str[] = { 5, 1, 3, 5, 7, 1, 3, 9 };
+//	int len = sizeof(str) / sizeof(str[0]);
+//	first_num(str, len);
+//
+//	printf("\n");
+//	system("pause");
+//	return 0;
+//}
 
-	char *pHashKey = str;
-	while (*(pHashKey) != '\0')
-		hashTable[*(pHashKey++)]++;
+//#include <stdio.h>
+//#include<stdlib.h>
+//
+//int find_one_bit(int num) //寻找二进制中的某一位为1的位
+//{
+//	int bit = 0;
+//	while (num)
+//	{
+//		if (num & 1 == 1)
+//			return bit;
+//		bit++;
+//		num = num >> 1;
+//	}
+//	return -1;
+//}
+//
+//void find_num(int arr[], int size, int *p1, int *p2)
+//{
+//	int tmp = 0;
+//	int pos = 0;
+//	for (int i = 0; i < size; i++)
+//	{
+//		tmp ^= arr[i];    //tmp保存的最终结果为不同的两个数字异或的结果
+//	}
+//	pos = find_one_bit(tmp);
+//	for (int i = 0; i < size; i++)
+//	{
+//		if (1 & (arr[i] >> pos))  //二进制位中同一位置是否为1，用以分组数字，因为某一位为1时，由异或的结果可知必定一个数字该位为0，另一个为1 //0（0 == *p1）与任何数字异或仍为该数本身。
+//			*p1 ^= arr[i];
+//		else
+//			*p2 ^= arr[i];
+//	}
+//}
+//
+//int main()
+//{
+//	int arr[] = { 5, 1, 3, 5, 7, 1, 3, 9 };
+//	int size = sizeof(arr) / sizeof(arr[0]);
+//	int num1 = 0;
+//	int num2 = 0;
+//	find_num(arr, size, &num1, &num2);  //num1，num2必须传进地址，否则只是修改了形参而并不影响主函数的值，num1，num2仍为初始化的0
+//	printf("%d %d\n", num1, num2);
+//
+//	system("pause");
+//	return 0;
+//}
 
-	pHashKey = str;
-	while (*(pHashKey) != '\0')
-	{
-		if (hashTable[*(pHashKey)] == 1)
-		{
-			printf("%c\n", *(pHashKey));
-			break;
-		} 
-		pHashKey++;
-	} 
-	return '\0';
-}
+//int fun(char *s)
+//{
+//	char *p = s;
+//	while (*p != '\0')
+//		p++;
+//
+//	return (p - s);
+//}
+//
+//int main()
+//{
+//	printf("%d\n", fun("goodbey!"));
+//	system("pause");
+//	return 0;
+//}
 
 int main()
 {
-	char str[] = "abaccdeff";
-	firstNotRepeate(str);
-
+	unsigned char a = 0xA5;
+	unsigned char b = ~a >> 4 + 1;
+	printf("%d\n", a);
+	printf("%d\n", b);
 	system("pause");
 	return 0;
 }
