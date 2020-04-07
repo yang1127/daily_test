@@ -347,12 +347,152 @@
 //	return 0;
 //}
 
+//int main()
+//{
+//	unsigned char a = 0xA5;
+//	unsigned char b = ~a >> 4 + 1;
+//	printf("%d\n", a);
+//	printf("%d\n", b);
+//	system("pause");
+//	return 0;
+//}
+
+//#define sum(a,b,c) a+b+c
+//int main()
+//{
+//	int i = 3;
+//	int j = 2;
+//	printf("%d\n", i*sum(i, (i + j), j));
+//	system("pause");
+//	return 0;
+//}
+
+//#include <iostream>
+//#include <string>
+//using namespace std;
+//
+//int main()
+//{	
+//	string s1;
+//	string s2;
+//	string tmp;
+//	getline(cin, s1);
+//	getline(cin, s2);
+//	char arr[256] = { 0 };
+//	for (int i = 0; i < s2.size(); i++)
+//		arr[s2[i]]++;
+//
+//	for (int j = 0; j < s1.size(); j++)
+//	{
+//		if (arr[s1[j]] == 0)
+//			tmp += s1[j];
+//	}
+//	cout << tmp << endl;
+//
+//	system("pause");
+//	return 0;
+//}
+
+//#define MAX 256
+//#include <assert.h>
+//char *DeleteChars(char *str1, char *str2)
+//{
+//	assert(str1 || str2);
+//
+//	int hashtable[MAX] = { 0 };
+//	while (*str2 != '\0') //aeiou//将str2中字符对应的hashtable数组中的位置上的值设为1
+//	{
+//		hashtable[*str2] = 1;
+//		++str2;
+//	} 
+//	char *p = str1;
+//	char *q = str1;
+//	while (*p != '\0')
+//	{
+//		if (!hashtable[*p])
+//		{
+//			*q++ = *p;
+//		}
+//		p++;//因为后面需要找到值 覆盖掉这个为1的值
+//	} 
+//	*q = '\0';
+//	return str1;
+//} 
+//
+//int main()
+//{
+//	char str1[] = "they are student";
+//	char str2[] = "aeiou";
+//	printf("%s\n", DeleteChars(str1, str2));
+//	system("pause");
+//	return 0;
+//}
+
+//int main()
+//{
+//	//int a = 2, *p1, **p2;
+//	//p2 = &p1;
+//	//p1 = &a;
+//	//a++;
+//	//printf("%d, %d, %d\n",a, *p1, **p2);
+//
+//	//int arr[] = { 6, 7, 8, 9, 10 };
+//	//int *ptr = arr;
+//	//*(ptr++) += 123;
+//	//printf("%d,%d\n", *ptr, *(++ptr));
+//
+//	int k, j, s;
+//	for (k = 2; k < 6; k++, k++)
+//	{
+//		s = 1;
+//		for (j = k; j < 6; j++)
+//			s += j;
+//	}
+//	printf("%d\n", s);
+//	system("pause");
+//	return 0;
+//}
+//#include <iostream>
+//using namespace std;
+//
+//void Palindrome(int num)
+//{
+//	int newed = 0;
+//	int n = num;
+//	while (num > 0)
+//	{
+//		newed = newed * 10 + num % 10;
+//		num /= 10;
+//	} 
+//	if(n == newed)
+//		printf("Yes\n");
+//
+//	else
+//		printf("No\n");
+//}
+//
+//int main()
+//{
+//	int n;
+//	cin >> n;
+//	Palindrome(n);
+//	system("pause");
+//	return 0;
+//}
+
 int main()
 {
-	unsigned char a = 0xA5;
-	unsigned char b = ~a >> 4 + 1;
-	printf("%d\n", a);
-	printf("%d\n", b);
+	//char str[] = "ABCDEFG";
+	//const char *p1, *p2;
+	//p1 = "abcd";
+	//p2 = "efgh";
+	//strcpy(str + 1, p2 + 1);
+	//strcpy(str + 3, p1 + 3);
+
+	//printf("%s\n", str);
+
+	int x = 1, y = 012;
+	printf("%d\n", y*x++);
 	system("pause");
 	return 0;
 }
