@@ -237,7 +237,6 @@
 //	}
 //}
 //
-//
 //int main()
 //{
 //	int arr[] = { 3, 6, 9, 12, 14, 18, 20, 26,  30};
@@ -248,3 +247,138 @@
 //	system("pause");
 //	return 0;
 //}
+
+//void Deblank(char *str)
+//{
+//	int flag = 0; //空格设置，还没开始处理空格
+//	int p = 0;
+//	int i = 0;
+//	while (str[i] != '\0') //每次遍历一个字符
+//	{
+//		if (!flag && str[i] == ' ')//遇到空格，还没开始处理空格，直到遍历到不是空格的位置 //‘a’ //首、尾巴空格 //除去两子串中间第一个空格
+//			i++;
+//		else if (!flag && str[i] != ' ')//遇到不是空格，还没开始处理空格，不是空格的字符重新赋值到新下标
+//		{
+//			flag = 1; //空格设置，开始处理空格
+//			str[p++] = str[i++];
+//		}
+//		else if (flag && str[i] == ' ')//遇到空格开始处理了 //每两个子字符串中间第一个空格，第一个空格保存，其余移除
+//		{
+//			flag = 0; //不处理
+//			str[p++] = str[i++];
+//		} 
+//		else //遍历子串
+//		{
+//			str[p++] = str[i++];
+//			flag = 1;
+//		}
+//	} 
+//	if(str[p - 1] == ' ') //结尾处多余空格 
+//		str[p - 1] = '\0';
+//	else //原字符串最后一位直接为‘\0’ 无空格
+//		str[p] = '\0';
+//}
+//
+//int main()
+//{
+//	char str[] = "   as    adad    q   ";
+//	Deblank(str);
+//	printf("%s\n", str);
+//	system("pause");
+//	return 0;
+//}
+
+//#include <assert.h>
+//
+//void Compress(char *str)
+//{
+//	int count = 1; //计出现次数
+//	int i = 0;
+//	assert(str);
+//
+//	while (str[i] != '\0')
+//	{
+//		if (str[i] == str[i + 1])
+//			count++;
+//		else
+//		{
+//			if (count != 1) //只出现一次的字符，只输出字符
+//				printf("%d",count);
+//
+//		printf("%c",str[i]); //一个相同的字符遍历完成，重新置为1
+//		count = 1;
+//		} 
+//		i++;
+//	} 
+//	printf("\n");
+//} 
+//int main()
+//{
+//	char  arr[] = "xxyyyz";
+//	Compress(arr);
+//
+//	system("pause");
+//	return 0;
+//}
+
+////1、第一种解法O（logn)
+//int isPower(int n) //8
+//{
+//	if (n < 1)
+//		return 0;
+//
+//	int i = 1;
+//	for (i = 1; i <= n; i <<= 1) //0000 1000 0000 1000
+//	{
+//		if (i == n)
+//			return 1;
+//	} 
+//	return 0;
+//} 
+//
+////2、第二种解法 O(1)
+//int isPower(int n)
+//{
+//	int m = 0;
+//	if (n < 1)
+//		return 0;
+//
+//    m = n & (n - 1); //二进制与运算 &-1数字为0
+//	if (m == 0)
+//		return 1;
+//
+//	return 0;
+//}
+//
+//int main()
+//{
+//	int ret = isPower(8);
+//	if (ret == 1)
+//		printf("是2的次方\n");
+//	else
+//		printf("不是2的次方\n");
+//
+//	system("pause");
+//	return 0;
+//}
+
+//反转链表
+//class Solution {
+//public:
+//	ListNode* reverseList(ListNode* head) {
+//		ListNode* newnode = NULL;
+//		ListNode* cur = head;
+//
+//		while (cur)
+//		{
+//			ListNode* next = cur->next;
+//			//头插
+//			cur->next = newnode;
+//			newnode = cur;
+//
+//			cur = next;
+//		}
+//		return newnode;
+//	}
+//};
+
