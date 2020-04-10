@@ -382,3 +382,213 @@
 //	}
 //};
 
+//class Solution {
+//public:
+//	bool isValid(string str) {
+//		std::stack<char> s;
+//		int size = str.size(); //获取字符串的长度
+//		for (int i = 0; i < size; i++)
+//		{
+//			char ch = str[i]; //取i的字符
+//			switch (ch)
+//			{
+//			case '(':
+//			case '[':
+//			case '{':
+//				s.push(ch); //入栈
+//				break;
+//			case ')':
+//			case ']':
+//			case '}':
+//			{
+//				if (s.empty())
+//					return false;
+//				char left = s.top();
+//				s.pop();
+//				if (!((left == '(' && ch == ')') || (left == '[' && ch == ']') || (left == '{' && ch == '}')))
+//					return false;
+//				break;
+//			}
+//			}
+//		}
+//		if (!s.empty())
+//			return false;
+//		return true;
+//	}
+//};
+
+//C
+//先实现一个栈
+//typedef int STDataType;
+//
+//typedef struct Stack {
+//	STDataType* _a;
+//	size_t _top;
+//	size_t _capacity;
+//}Stack;
+//
+//void StackInit(Stack* ps) //初始化
+//{
+//	assert(ps);
+//	ps->_a = NULL;
+//	ps->_top = 0;
+//	ps->_capacity = 0;
+//}
+//
+//void StackDestroy(Stack* ps) //销毁
+//{
+//	assert(ps);
+//	if (ps->_a != NULL)
+//	{
+//		free(ps->_a);
+//		ps->_a = NULL;
+//		ps->_capacity = ps->_top = 0;
+//	}
+//}
+//
+//void StackPush(Stack* ps, STDataType x) //入栈
+//{
+//	assert(ps);
+//	if (ps->_top == ps->_capacity)
+//	{
+//		size_t newcapacity = ps->_capacity == 0 ? 2 : ps->_capacity * 2;
+//		ps->_a = (STDataType*)realloc(ps->_a, newcapacity * sizeof(STDataType));
+//		ps->_capacity = newcapacity;
+//	}
+//
+//
+//	ps->_a[ps->_top] = x; // 在栈顶的位置加数据
+//	ps->_top++;
+//}
+//
+//void StackPop(Stack* ps) //出栈
+//{
+//	assert(ps);
+//	if (ps && ps->_top > 0)
+//	{
+//		--ps->_top;
+//	}
+//}
+//
+//STDataType StackTop(Stack* ps) //栈顶元素
+//{
+//	assert(ps && ps->_top > 0);
+//	return ps->_a[ps->_top - 1];
+//}
+//
+//bool StackEmpty(Stack* ps) //栈是否为空
+//{
+//	assert(ps);
+//	return ps->_top == 0 ? 0 : 1;
+//}
+//
+//size_t StackSize(Stack* ps)
+//{
+//	assert(ps);
+//	return ps->_top;
+//}
+//
+//bool isValid(char * s) {  //一个字符一个字符比较
+//	Stack st;
+//	StackInit(&st);
+//	char* p = s;
+//	while (*p != 0)
+//	{
+//		char ch = *p;
+//		switch (ch)
+//		{
+//		case '(':
+//		case '[':
+//		case '{':
+//			StackPush(&st, ch); //入栈
+//			break;
+//		case ')':
+//		case ']':
+//		case '}':
+//		{
+//			if (StackEmpty(&st) == 0)
+//				return false;
+//
+//			char left = StackTop(&st);
+//			if ((left == '(' && ch == ')') || (left == '[' && ch == ']') || (left == '{' && ch == '}'))
+//				StackPop(&st);
+//			else
+//				return false;
+//		}
+//		default:
+//			break;
+//		}
+//		p++;
+//	}
+//	if (StackEmpty(&st) == 0)
+//		return true;
+//	else
+//		return false;
+//}
+
+//栈实现队列
+//实现一个栈再使用
+//思路：实现两个栈，一个入栈，一个出栈
+//typedef struct {
+//	Stack pushST; //入栈
+//	Stack popST;  //出栈
+//} MyQueue;
+//
+//
+///** Initialize your data structure here. */
+//MyQueue* myQueueCreate() { //返回指针，动态开辟
+//	MyQueue* queue = (MyQueue*)malloc(sizeof(MyQueue));
+//	StackInit(&queue->pushST);
+//	StackInit(&queue->popST);
+//
+//	return queue;
+//}
+//
+//
+///** Push element x to the back of queue. */
+//void myQueuePush(MyQueue* obj, int x) {
+//	StackPush(&obj->pushST, x);
+//}
+//
+//
+///** Removes the element from in front of queue and returns that element. */
+//int myQueuePop(MyQueue* obj) {
+//	if (StackEmpty(&obj->popST) == 0) //若出栈为空，再入栈里面导数据
+//	{
+//		while (StackEmpty(&obj->pushST) != 0)
+//		{
+//			StackPush(&obj->popST, StackTop(&obj->pushST));
+//			StackPop(&obj->pushST);
+//		}
+//	}
+//	int top = StackTop(&obj->popST);
+//	StackPop(&obj->popST);
+//	return top;
+//}
+//
+//
+///** Get the front element. */
+//int myQueuePeek(MyQueue* obj) { //或取队头元素
+//	if (StackEmpty(&obj->popST) == 0) //若出栈为空，再入栈里面导数据
+//	{
+//		while (StackEmpty(&obj->pushST) != 0)
+//		{
+//			StackPush(&obj->popST, StackTop(&obj->pushST));
+//			StackPop(&obj->pushST);
+//		}
+//	}
+//	return StackTop(&obj->popST);
+//}
+//
+//
+///** Returns whether the queue is empty. */
+//bool myQueueEmpty(MyQueue* obj) {
+//	return StackEmpty(&obj->pushST) + StackEmpty(&obj->popST) == 0 ? true : false;  //出、入栈均为空时，队列为空
+//}
+//
+//
+//void myQueueFree(MyQueue* obj) {
+//	StackDestroy(&obj->pushST);
+//	StackDestroy(&obj->popST);
+//	free(obj);
+//}
