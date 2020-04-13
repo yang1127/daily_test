@@ -121,3 +121,204 @@
 //	free(obj->_array);
 //	free(obj);
 //}
+
+//class MyStack {
+//	std::queue<int> q;
+//public:
+//	/** Initialize your data structure here. */
+//	MyStack() { //构造方法
+//	}
+//
+//	/** Push element x onto stack. */
+//	void push(int x) {
+//		q.push(x);
+//	}
+//
+//	/** Removes the element on top of the stack and returns that element. */
+//	int pop() {
+//		int n = q.size();
+//		for (int i = 0; i < n - 1; i++)
+//		{
+//			int v = q.front();
+//			q.pop();
+//			q.push(v);
+//		}
+//		int v = q.front();
+//		q.pop();
+//		return v;
+//	}
+//
+//	/** Get the top element. */
+//	int top() {
+//		int n = q.size();
+//		for (int i = 0; i < n - 1; i++)
+//		{
+//			int v = q.front();
+//			q.pop();
+//			q.push(v);
+//		}
+//		int v = q.front();
+//		q.pop();
+//		q.push(v); //并没有出
+//		return v;
+//	}
+//
+//	/** Returns whether the stack is empty. */
+//	bool empty() {
+//		return q.empty();
+//	}
+//};
+
+//class MyQueue {
+//	std::stack<int> s1; //入栈
+//	std::stack<int> s2; //出栈
+//
+//public:
+//	/** Initialize your data structure here. */
+//	MyQueue() {
+//	}
+//
+//	/** Push element x to the back of queue. */
+//	void push(int x) {
+//		s1.push(x);
+//	}
+//
+//	/** Removes the element from in front of queue and returns that element. */
+//	int pop() {
+//		if (s2.empty()) //如果出栈为空，将入栈的数据导入出栈，再出栈
+//		{
+//			int n = s1.size();
+//			for (int i = 0; i < n; i++)
+//			{
+//				int v = s1.top();
+//				s1.pop();
+//				s2.push(v);
+//			}
+//		}
+//		int v = s2.top();
+//		s2.pop();
+//		return v;
+//	}
+//
+//	/** Get the front element. */
+//	int peek() { //查看对头元素
+//		if (s2.empty())
+//		{
+//			int n = s1.size();
+//			for (int i = 0; i < n; i++)
+//			{
+//				int v = s1.top();
+//				s1.pop();
+//				s2.push(v);
+//			}
+//		}
+//		int v = s2.top(); //不需要出栈
+//		return v;
+//	}
+//
+//	/** Returns whether the queue is empty. */
+//	bool empty() {
+//		return s1.empty() && s2.empty();
+//	}
+//};
+
+//class MinStack {
+//	std::stack<int> stack;
+//	std::stack<int> min;
+//public:
+//	/** initialize your data structure here. */
+//	MinStack() {
+//
+//	}
+//
+//	void push(int x) {
+//		stack.push(x);
+//		if (min.empty() || x < min.top()) //小栈为空或者插入数据小于小栈栈顶元素，插入x
+//		{
+//			min.push(x);
+//		}
+//		else
+//		{
+//			min.push(min.top()); //再入栈之前最小的数据，stack栈入数据，只要栈顶元素大于min栈的栈顶元素，min栈继续入min的栈顶元素
+//		}
+//	}
+//
+//	void pop() { //两个栈均出栈
+//		min.pop();
+//		stack.pop();
+//	}
+//
+//	int top() {
+//		return stack.top(); //出stack的栈顶元素
+//	}
+//
+//	int getMin() {
+//		return min.top();
+//	}
+//};
+
+//class MyCircularQueue {
+//	int *array;
+//	int capacity;
+//	int front;
+//	int rear;
+//	int size;
+//public:
+//	/** Initialize your data structure here. Set the size of the queue to be k. */
+//	MyCircularQueue(int k) {
+//		array = (int*)malloc(sizeof(int) * k);
+//		capacity = k;
+//		front = 0;
+//		rear = 0;
+//		size = 0;
+//	}
+//
+//	/** Insert an element into the circular queue. Return true if the operation is successful. */
+//	bool enQueue(int value) {
+//		if (size >= capacity)
+//			return false;
+//
+//		array[rear] = value;
+//		rear = (rear + 1) % capacity;
+//		size++;
+//		return true;
+//	}
+//
+//	/** Delete an element from the circular queue. Return true if the operation is successful. */
+//	bool deQueue() {
+//		if (size == 0)
+//			return false;
+//
+//		front = (front + 1) % capacity;
+//		size--;
+//		return true;
+//	}
+//
+//
+//	/** Get the front item from the queue. */
+//	int Front() {
+//		if (size == 0)
+//			return -1;
+//
+//		return array[front];
+//	}
+//
+//	/** Get the last item from the queue. */
+//	int Rear() {
+//		if (size == 0)
+//			return -1;
+//
+//		int index = (rear + capacity - 1) % capacity; //向前循环
+//		return array[index];
+//	}
+//
+//	/** Checks whether the circular queue is empty or not. */
+//	bool isEmpty() {
+//		return size == 0;
+//	}
+//
+//	/** Checks whether the circular queue is full or not. */
+//	bool isFull() {
+//		return size == capacity;
+//	}
+//};
