@@ -322,3 +322,78 @@
 //		return size == capacity;
 //	}
 //};
+
+//class Solution {
+//public:
+//	ListNode* deleteDuplication(ListNode* pHead)
+//	{
+//		if (pHead == NULL || pHead->next == NULL) //保证链接至少有两个节点
+//			return pHead;
+//
+//		struct ListNode *node = (ListNode *)malloc(sizeof(ListNode));
+//		node->next = pHead;
+//
+//		struct ListNode *prev = node;
+//		struct ListNode *cur = pHead;
+//		struct ListNode *next = pHead->next;
+//		while (next != NULL)
+//		{
+//			if (cur->val == next->val)
+//			{
+//				while (next != NULL && cur->val == next->val) //找重复元素
+//					next = next->next;
+//
+//				prev->next = next; //删除(prev, next)之间所有节点
+//				cur = next;
+//
+//				if (next != NULL)
+//					next = next->next;
+//			}
+//			else
+//			{
+//				prev = cur;
+//				cur = cur->next;
+//				next = next->next;
+//			}
+//		}
+//		return node->next;
+//	}
+//};
+
+//class Solution {
+//public:
+//	ListNode* deleteDuplication(ListNode* pHead)
+//	{
+//		if (pHead == NULL || pHead->next == NULL) //保证链接至少有两个节点
+//			return pHead;
+//
+//		struct ListNode *prev = NULL;
+//		struct ListNode *cur = pHead;
+//		struct ListNode *next = pHead->next;
+//		while (next != NULL)
+//		{
+//			if (cur->val == next->val)
+//			{
+//				while (next != NULL && cur->val == next->val) //找重复元素
+//					next = next->next;
+//
+//				if (prev != NULL)
+//					prev->next = next; //除去重复元素后
+//				else
+//					pHead = next; //当链表头为重复元素时
+//
+//				cur = next;
+//
+//				if (next != NULL)
+//					next = next->next;
+//			}
+//			else
+//			{
+//				prev = cur;
+//				cur = cur->next;
+//				next = next->next;
+//			}
+//		}
+//		return pHead;
+//	}
+//};
