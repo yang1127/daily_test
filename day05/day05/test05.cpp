@@ -397,3 +397,50 @@
 //		return pHead;
 //	}
 //};
+
+//ListNode *reverseList(ListNode *pHead)
+//{
+//	ListNode *newnode = NULL;
+//	ListNode *cur = pHead;
+//
+//	while (cur != NULL)
+//	{
+//		ListNode *next = cur->next;
+//		cur->next = newnode;
+//		newnode = cur;
+//
+//		cur = next;
+//	}
+//	return newnode;
+//}
+//
+//
+//class PalindromeList {
+//public:
+//	bool chkPalindrome(ListNode* A) {
+//		// write code here
+//		ListNode *cur = A;
+//		int a[900] = { 0 };
+//		int n = 0;
+//		int i = 0;
+//
+//		while (cur != NULL)
+//		{
+//			a[i++] = cur->val;
+//			n++;
+//
+//			cur = cur->next;
+//		}
+//
+//		int left = 0, right = n - 1;
+//		while (left < right)
+//		{
+//			if (a[left] != a[right])
+//				return false;
+//
+//			++left;
+//			--right;
+//		}
+//		return true;
+//	}
+//};
