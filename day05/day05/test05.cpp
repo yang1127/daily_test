@@ -475,3 +475,137 @@
 //
 //	return 0;
 //}
+
+//二叉树前序遍历
+/**
+ * Note: The returned array must be malloced, assume caller calls free().
+ */
+
+//int GetTreeSize(struct TreeNode* root) //树大小 -> 左子树大小 + 根 + 右子树大小
+//{
+//	if (root == NULL)
+//		return 0;
+//
+//	return GetTreeSize(root->left) + GetTreeSize(root->right) + 1;
+//}
+//
+//void _preorderTraversal(struct TreeNode* root, int* array, int* pIndex)
+//{
+//	if (root == NULL)
+//		return;
+//
+//	array[*pIndex] = root->val;
+//	++(*pIndex);
+//	_preorderTraversal(root->left, array, pIndex);
+//	_preorderTraversal(root->right, array, pIndex);
+//}
+//
+//int* preorderTraversal(struct TreeNode* root, int* returnSize) {
+//	*returnSize = GetTreeSize(root);
+//	int* array = (int*)malloc(*returnSize * sizeof(int));
+//	int index = 0;
+//
+//	_preorderTraversal(root, array, &index);
+//
+//	return array;
+//}
+
+//法二
+//int *array = NULL; //简单链表实现
+//int size = 0;
+//
+//void preorder(struct TreeNode* root) //前序遍历
+//{
+//	if (root == NULL)
+//		return;
+//
+//
+//	//根、左、右
+//	array[size++] = root->val;
+//	preorder(root->left);
+//	preorder(root->right);
+//}
+//
+//int* preorderTraversal(struct TreeNode* root, int* returnSize) {
+//	array = (int*)malloc(sizeof(int) * 10000); //必须在这里初始化
+//	size = 0;
+//	preorder(root);
+//	*returnSize = size;
+//	return array;
+//}
+
+//中序
+//int *array = NULL;
+//int size = 0;
+//
+//void inorder(struct TreeNode* root) //中序遍历
+//{
+//	if (root == NULL)
+//		return;
+//
+//
+//	//左、根、右
+//	inorder(root->left);
+//	array[size++] = root->val;
+//	inorder(root->right);
+//}
+//
+//  int* inorderTraversal(struct TreeNode* root, int* returnSize) {
+//	array = (int*)malloc(sizeof(int) * 10000); //必须在这里初始化
+//	size = 0;
+//	inorder(root);
+//	*returnSize = size;
+//	return array;
+//}
+
+//后序
+//int *array = NULL;
+//int size = 0;
+//
+//void postorder(struct TreeNode* root) //后序遍历
+//{
+//	if (root == NULL)
+//		return;
+//
+//	//左、右、根
+//	postorder(root->left);
+//	postorder(root->right);
+//	array[size++] = root->val;
+//}
+//
+//  int* postorderTraversal(struct TreeNode* root, int* returnSize) {
+//	array = (int*)malloc(sizeof(int) * 10000);
+//	size = 0;
+//	postorder(root);
+//	*returnSize = size;
+//	return array;
+//}
+
+//相同的树
+//bool isSameTree(struct TreeNode* p, struct TreeNode* q) {
+//	if (p == NULL || q == NULL)
+//		return false;
+//
+//	if (p == NULL && q == NULL)
+//		return true;
+//
+//	return p->val == q->val && isSameTree(p->left, q->left) && isSameTree(p->right, q->right);
+//}
+
+//对称二叉树
+//bool _isSymmetric(struct TreeNode* left, struct TreeNode* right) {
+//	if (left == NULL && right == NULL)
+//		return true;
+//
+//	if (left == NULL || right == NULL)
+//		return false;
+//
+//	return left->val == right->val && _isSymmetric(left->left, right->right) && _isSymmetric(left->right, right->left);
+//}
+//
+//bool isSymmetric(struct TreeNode* root) {
+//	if (root == NULL)
+//		return true;
+//
+//	return _isSymmetric(root->left, root->right);
+//}
