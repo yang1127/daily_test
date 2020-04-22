@@ -609,3 +609,135 @@
 //
 //	return _isSymmetric(root->left, root->right);
 //}
+
+////平衡二叉树
+//int maxDepth(struct TreeNode* root) {
+//	if (root == NULL) //树为空，深度为0
+//		return 0;
+//
+//	int leftDepth = maxDepth(root->left); //递归左子树深度
+//	int rightDepth = maxDepth(root->right); //递归右子树深度
+//
+//	return leftDepth > rightDepth ? leftDepth + 1 : rightDepth + 1; //最大深度 = 最大子树深度 + 1(根节点)
+//}
+//
+//bool isBalanced(struct TreeNode* root) {
+//	if (root == NULL) //树为空，也为平衡二叉树
+//		return true;
+//
+//	int leftDepth = maxDepth(root->left); //递归左子树深度
+//	int rightDepth = maxDepth(root->right); //递归右子树深度
+//
+//	return abs(leftDepth - rightDepth) < 2 && isBalanced(root->left) && isBalanced(root->right); //平衡树的左、右子树高度不能超过2
+//}
+
+////树的最大深度
+//int maxDepth(struct TreeNode* root) {
+//	if (root == NULL) //树为空，深度为0
+//		return 0;
+//
+//	int leftDepth = maxDepth(root->left); //递归左子树深度
+//	int rightDepth = maxDepth(root->right); //递归右子树深度
+//
+//	return leftDepth > rightDepth ? leftDepth + 1 : rightDepth + 1; //最大深度 = 最大子树深度 + 1(根节点)
+//}
+
+//平衡二叉树O(n)
+//bool _isBalanced(struct TreeNode* root, int* pDepth)
+//{
+//	if (root == NULL)
+//	{
+//		*pDepth = 0;
+//		return true;
+//	}
+//	int leftpDepth = 0, rightpDepth = 0;
+//	if (_isBalanced(root->left, &leftpDepth) && _isBalanced(root->right, &rightpDepth) && abs(leftpDepth - rightpDepth) < 2)
+//	{
+//		*pDepth = leftpDepth > rightpDepth ? leftpDepth + 1 : rightpDepth + 1;
+//		return true;
+//	}
+//	else
+//		return false;
+//}
+//
+//bool isBalanced(struct TreeNode* root) {
+//	int depth = 0;
+//	return _isBalanced(root, &depth);
+//}
+
+////另一个子树
+//bool isSametree(struct TreeNode* s, struct TreeNode* t)
+//{
+//	if (s == NULL && t == NULL)
+//		return true;
+//
+//	if (s == NULL || t == NULL)
+//		return false;
+//
+//	return s->val == t->val && isSametree(s->left, t->left) && isSametree(s->right, t->right);
+//}
+//
+//bool isSubtree(struct TreeNode* s, struct TreeNode* t) {
+//	if (s == NULL)
+//		return false;
+//
+//	if (t == NULL)
+//		return true; // s也可以看做它自身的一棵子树
+//
+//	if (s->val == t->val && isSametree(s, t))
+//		return true;
+//
+//	return isSubtree(s->left, t) || isSubtree(s->right, t);
+//}
+
+//#include <stdio.h>
+//#include <malloc.h>
+//
+//typedef char BTDataType;
+//typedef struct BinaryTreeNode
+//{
+//	BTDataType data;
+//	struct BinaryTreeNode* left;
+//	struct BinaryTreeNode* right;
+//}BTNode;
+//
+//BTNode* BinaryTreeCreate(char* a, int* pi)
+//{
+//	if (a[*pi] == '#')
+//	{
+//		return NULL;
+//	}
+//	BTNode* root = (BTNode*)malloc(sizeof(BTNode));
+//
+//	root->data = a[*pi];
+//
+//	++(*pi);
+//	root->left = BinaryTreeCreate(a, pi);
+//
+//	++(*pi);
+//	root->right = BinaryTreeCreate(a, pi);
+//
+//	return root;
+//}
+//
+//void BinaryTreeInOrder(BTNode* root)
+//{
+//	if (root == NULL)
+//		return;
+//
+//	BinaryTreeInOrder(root->left);
+//	printf("%c ", root->data);
+//	BinaryTreeInOrder(root->right);
+//}
+//
+//int main()
+//{
+//	char a[100] = { 0 };
+//	scanf("%s", a);
+//	int i = 0;
+//	BTNode* root = BinaryTreeCreate(a, &i); //创建根节点
+//
+//	//printf("中序遍历为：");
+//	BinaryTreeInOrder(root);
+//	return 0;
+//}
