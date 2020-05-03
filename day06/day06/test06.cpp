@@ -67,3 +67,86 @@
 //		return result;
 //	}
 //};
+
+//星际密码
+//#include <iostream>
+//#include <vector>
+//using namespace std;
+//
+//vector<int> a = { 1, 1 }; //全局
+//void func()
+//{
+//	for (int i = 2; i < 10010; i++)
+//	{
+//		a.push_back((a[i - 1] + a[i - 2]) % 10000); //保留后四位
+//	}
+//}
+//
+//int main()
+//{
+//	int n, t;
+//	func();
+//	while (cin >> n) //第一行包含一个整数n
+//	{
+//		while (n--)
+//		{
+//			cin >> t; //第二行包含n个正整数Xi (1≤Xi≤10000)
+//			printf("%04d", a[t]);
+//		}
+//		cout << endl;
+//	}
+//	return 0;
+//}
+
+//数根
+//#include <iostream>
+//#include <string>
+//using namespace std;
+//
+//int root_num(int num)
+//{
+//	int sumroot_num = 0;
+//	while (num > 0) //求每位相加和
+//	{
+//		sumroot_num += num % 10;
+//		num = num / 10;
+//	}
+//	while (sumroot_num > 9)//若不是个位数、再将加后的数再相加，直到为个位数
+//	{
+//		sumroot_num = root_num(sumroot_num);
+//	}
+//	return sumroot_num;
+//}
+//
+//int main()
+//{
+//	string num;
+//	while (cin >> num)
+//	{
+//		int sum = 0;
+//		for (int i = 0; i < num.size(); i++)
+//		{
+//			sum += num[i] - '0'; //将数字每一位先相加，防止过大
+//		}
+//		cout << root_num(sum) << endl;
+//	}
+//	return 0;
+//}
+
+//快到碗里来
+//#include <iostream>
+//using namespace std;
+//
+//int main()
+//{
+//	double n, r;
+//	while (cin >> n >> r)
+//	{
+//		double area = 2 * 3.14 * r;
+//		if (area > n)
+//			cout << "Yes" << endl;
+//		else
+//			cout << "No" << endl;
+//	}
+//	return 0;
+//}
