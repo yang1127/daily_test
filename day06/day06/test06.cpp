@@ -150,3 +150,93 @@
 //	}
 //	return 0;
 //}
+
+//奇偶数位
+//class Solution {
+//public:
+//	void oddInOddEvenInEven(std::vector<int>& arr, int len) {
+//		long i = 0, j = 1;
+//		while (i < len && j < len) 
+//		{
+//			if ((arr[i] % 2) == 0) //偶数位上寻找非偶数
+//			{
+//				i += 2; 
+//				continue; 
+//			}
+//			if ((arr[j] % 2) != 0) //奇数位上寻找非奇数
+//			{
+//				j += 2; continue; 
+//			}
+//			swap(arr[i], arr[j]);
+//		}
+//	}
+//};
+
+//猴子分桃
+//#include <iostream>
+//#include <string>
+//#include <math.h>
+//int main()
+//{
+//	int n;
+//	while (std::cin >> n) {
+//		if (n == 0) break;
+//		long total = pow(5, n) - 4;
+//		long left = pow(4, n) + n - 4;
+//		std::cout << total << " " << left << std::endl;
+//	}
+//	return 0;
+//}//最小不可组合数//#include <iostream>
+//#include <vector>
+//class Solution {
+//public:
+//	int getFirstUnFormedNum(std::vector<int> &arr, int length) {
+//		int sum = 0, min = arr[0];
+//		int i, j;
+//		for (int i = 0; i < length; i++)
+//		{
+//			sum += arr[i];
+//			min = arr[i] < min ? arr[i] : min;
+//		}
+//		std::vector<int> dp(sum + 1, 0);
+//		for (i = 0; i < length; i++) {
+//			for (j = sum; j >= arr[i]; j--) 
+//			{
+//					if (dp[j] < dp[j - arr[i]] + arr[i])//对每个承重计算当前最大能放置重量
+//						dp[j] = dp[j - arr[i]] + arr[i];//更新背包中能够放入的最大值
+//					else
+//						dp[j] = dp[j];
+//			}
+//		}
+//		//最后当承重为n时，放入的重量不为n则认为是最大不可求和
+//		for (i = min; i <= sum; i++)
+//		{
+//			if (i != dp[i])
+//				return i;
+//		}
+//		return sum + 1;
+//	}
+//};////有假币//#include <stdlib.h>
+//#include <stdio.h>
+//#include <string.h>
+//int main() {
+//	long long n; int cnt;
+//	while ((scanf("%lld", &n)) != EOF) {
+//		if (n == 0)
+//			break;
+//		cnt = 0;
+//		while (n >= 2) {
+//			if (n % 3) {
+//				//不可以整除则取最差情况：最重的一份是 n/3 + 1个金币
+//				n = n / 3 + 1;
+//			}
+//			else {
+//				//可以整除在直接整除，能够获取到最重的一份
+//				n /= 3;
+//			}
+//			cnt++;
+//		}
+//			printf("%d\n", cnt);
+//	};
+//	return 0;
+//}
