@@ -176,17 +176,25 @@
 //#include <iostream>
 //#include <string>
 //#include <math.h>
+//using namespace std;
+//
 //int main()
 //{
 //	int n;
-//	while (std::cin >> n) {
-//		if (n == 0) break;
+//	while (cin >> n) 
+//	{
+//		if (n == 0) 
+//			break;
 //		long total = pow(5, n) - 4;
 //		long left = pow(4, n) + n - 4;
-//		std::cout << total << " " << left << std::endl;
+//		cout << total << " " << left << endl;
 //	}
+//	system("pause");
 //	return 0;
-//}//最小不可组合数//#include <iostream>
+//}
+
+//最小不可组合数
+//#include <iostream>
 //#include <vector>
 //class Solution {
 //public:
@@ -216,27 +224,161 @@
 //		}
 //		return sum + 1;
 //	}
-//};////有假币//#include <stdlib.h>
-//#include <stdio.h>
-//#include <string.h>
-//int main() {
-//	long long n; int cnt;
-//	while ((scanf("%lld", &n)) != EOF) {
+//};
+
+////有假币
+//#include <iostream>
+//using namespace std;
+//
+//int main() 
+//{
+//	int n;
+//	while (cin >> n)
+//	{
+//		int count = 0;
 //		if (n == 0)
 //			break;
-//		cnt = 0;
-//		while (n >= 2) {
-//			if (n % 3) {
-//				//不可以整除则取最差情况：最重的一份是 n/3 + 1个金币
+//		while (n >= 2) 
+//		{
+//			if (n % 3) //不可以整除则取最差情况：最重的一份是 n/3 + 1个金币
 //				n = n / 3 + 1;
-//			}
-//			else {
-//				//可以整除在直接整除，能够获取到最重的一份
+//			else //可以整除在直接整除，能够获取到最重的一份
 //				n /= 3;
-//			}
-//			cnt++;
+//
+//			count++;
 //		}
-//			printf("%d\n", cnt);
-//	};
+//		cout << count << endl;
+//	}
+//	system("pause");
+//	return 0;
+//}
+
+
+//字符串反转
+//#include <iostream>
+//#include <string>
+//#include <algorithm> //reverse
+//using namespace std;
+//
+//int main()
+//{
+//	string s;
+//	while (cin >> s)
+//	{
+//		reverse(s.begin(), s.end());
+//		cout << s << endl;
+//	}
+//	system("pause");
+//	return 0;
+//}
+
+////反向迭代器
+//#include<iostream> 
+//#include <string>
+//using namespace std;
+//int main()
+//{
+//	string s;
+//	while (cin >> s)
+//	{
+//		string s1(s.rbegin(), s.rend());
+//		cout << s1 << endl;
+//	}
+//	system("pause");
+//	return 0;
+//}
+
+//前后遍历、交换
+//#include<string>
+//#include<iostream>
+//
+//using namespace std;
+//
+//string reverseString(string s) 
+//{
+//	if (s.empty())
+//		return s;
+//	size_t start = 0;
+//	size_t end = s.size() - 1;
+//	while (start < end)
+//	{
+//		swap(s[start], s[end]);
+//		++start;
+//		--end;
+//	}
+//	return s;
+//}
+//
+//int main()
+//{
+//	string s;
+//	getline(cin, s);
+//	cout << reverseString(s) << endl;
+//	system("pause");
+//	return 0;
+//}
+
+//最大公共子串
+//#include<iostream>
+//#include<string>
+//#include<vector>
+//using namespace std;
+//
+//int main()
+//{
+//	int max = 0; //max初值.
+//	string str1, str2;
+//	while (cin >> str1 >> str2)
+//	{
+//		int len1 = str1.size();
+//		int len2 = str2.size();
+//		int max = 0;
+//		//所有值初始化为0
+//		vector<vector<int>> dp(len1, vector<int>(len2, 0));
+//		//计算dp
+//		for (int i = 0; i < len1; i++)
+//		{
+//			for (int j = 0; j < len2; j++)
+//			{
+//				//如果当前结尾的字符相等，则在dp[i-1][j-1]的基础上加1
+//				if (str1[i] == str2[j])
+//				{
+//					if (i >= 1 && j >= 1)
+//						dp[i][j] = dp[i - 1][j - 1] + 1;
+//					else
+//						dp[i][j] = 1;//dp[i][0] or dp[0][j]
+//				}
+//				//更新最大值
+//				if (dp[i][j] > max)
+//					max = dp[i][j];
+//			}
+//		}
+//		cout << max << endl;
+//	}
+//    system("pause");
+//	return 0;
+//}
+
+//#include<iostream>
+//#include<string>
+//using namespace std;
+//
+//int main()
+//{
+//	string s1, s2;
+//	while (cin >> s1 >> s2)
+//	{
+//		int maxlen = 0; //保留最大子串
+//		for (int i = 0; i < s1.size(); i++)
+//		{
+//			for (int j = s1.size(); j > i; j--)
+//			{
+//				if (s2.find(s1.substr(i, j - i)) != string::npos)
+//					maxlen = maxlen > j - i ? maxlen : j - i; //若j - i > maxlen，则maxlen更新为 j - i
+//			}
+//		}
+//		cout << maxlen << endl;
+//	}
+//	system("pause");
 //	return 0;
 //}
