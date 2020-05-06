@@ -193,7 +193,7 @@
 //	return 0;
 //}
 
-//最小不可组合数
+////最小不可组合数
 //#include <iostream>
 //#include <vector>
 //class Solution {
@@ -381,4 +381,181 @@
 //	}
 //	system("pause");
 //	return 0;
-//}
+//}
+
+//#include<iostream>
+//#include<vector>
+//using namespace std;
+//
+//int main()
+//{
+//	int T, n, k;
+//	cin >> T; //T：要洗牌的牌组数量
+//	while (T--)
+//	{
+//		cin >> n >> k; //k：洗牌的次数
+//		int num = 2 * n; //n：2n即牌的数量
+//		vector<int> table(num);
+//		for (int i = 0; i < num; ++i)
+//			cin >> table[i];
+//		//洗k次牌
+//		while (k--)
+//		{
+//			vector<int> n1(table.begin(), table.end());
+//			for (int i = 0; i < n; ++i)
+//			{
+//				//如果当前数小于等于n（即在左手），则他下次出现的位置是 2*当前位置
+//				//与之对应的当前位置 + n（即在右手）的牌,则他下次出现的位置是 2*当前位置 + 1
+//				table[2 * i] = n1[i];
+//				table[2 * i + 1] = n1[i + n];
+//			}
+//		}
+//		for (int i = 0; i < num - 1; ++i)
+//			cout << table[i] << " ";
+//		cout << table[num - 1] << endl;
+//	}
+//	return 0;
+//}
+
+////输入：第一行输入歌曲数量，第二行输入指令
+////输出：为两行，第一行为当前歌曲所在的列表，第二行为光标所指向的歌曲。
+////
+////思路：本题比较简单，通过解析指令，进行移动即可，分两种情况，歌曲数目不大于4和大于4的情况
+//
+//#include <iostream>
+//#include <string>
+//using namespace std;
+//
+//int main() 
+//{
+//	int n;//歌曲数量
+//	string order;//命令
+//	while (cin >> n >> order)
+//	{
+//		将n首歌曲编号1：n , num为光标当前所在歌曲的编号,first为当前屏幕显示页的第一首歌曲的编号
+//		int num = 1, first = 1;
+//		if (n <= 4) //歌曲总数不超过4时，所有歌曲一页即可显示完，不需翻页，first始终不变
+//		{
+//			for (int i = 0; i < order.size(); i++)
+//			{
+//				if (num == 1 && order[i] == 'U')
+//					num = n;
+//				else if (num == n && order[i] == 'D')
+//					num = 1;
+//				else if (order[i] == 'U')
+//					num--;
+//				else
+//					num++;
+//			}
+//			for (int i = 1; i <= n - 1; i++)
+//				cout << i << ' ';
+//			cout << n << endl;
+//			cout << num << endl;
+//		}
+//		else //歌曲总数大于4时，显示完全所有歌曲需要翻页，屏幕总是显示4首歌曲
+//		{
+//			for (int i = 0; i < order.size(); i++)
+//			{
+//				if (first == 1 && num == 1 && order[i] == 'U')//特殊翻页1
+//				{
+//					first = n - 3; num = n;
+//				} 
+//				else if (first == n - 3 && num == n && order[i] == 'D')//特殊翻页2
+//				{
+//					first = 1; 
+//					num = 1;
+//				} 
+//				else if (first != 1 && num == first && order[i] == 'U')//一般翻页1
+//				{
+//					first--; 
+//					num--;
+//				} 
+//				else if (first != n - 3 && num == first + 3 && order[i] == 'D')//一般翻页2
+//				{
+//					first++; 
+//					num++;
+//				} 
+//				else if (order[i] == 'U')//其他情况1
+//					num--; 
+//				else//其他情况2
+//					num++; 
+//			}
+//			for (int i = first; i < first + 3; i++)
+//				cout << i << ' ';
+//			cout << first + 3 << endl;
+//			cout << num << endl;
+//		}
+//	}
+//	return 0;
+//}//小易升级之路//思路：两种情况
+//< 累加
+//> 求最大公约数、再累加
+
+//#include <iostream>
+//#include <vector>
+//using namespace std;
+//
+//int GCD(int a, int b) //辗转法求最大公约数
+//{
+//	int m;
+//	while (m = a % b)
+//	{
+//		a = b;
+//		b = m;
+//	}
+//	return b;
+//}
+//
+//int main()
+//{
+//	int n, c; //怪物数量、小易初始值
+//	vector <int> v;
+//	while (cin >> n >> c)
+//	{
+//		v.resize(n);//分配大小
+//		for (int i = 0; i < n; i++)
+//			cin >> v[i]; //每个怪物的防御能力
+//
+//		for (int i = 0; i < n; i++)
+//		{
+//			if (v[i] < c)
+//				c += v[i];
+//			else
+//			{
+//				c += GCD(c, v[i]);
+//			}
+//		}
+//		cout << c << endl;
+//	}
+//	return 0;
+//}
+
+//出现有一次
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main()
+{
+	string s;
+	while (cin >> s)
+	{
+		int hashtable[256] = { 0 };//初始化为0
+		for (auto& e : s)
+			hashtable[e]++; //遍历将下标均置为1
+
+		int i;
+		for (i = 0; i < s.size(); i++)
+		{
+			if (hashtable[s[i]] == 1) //第一次出现
+			{
+				cout << s[i] << endl;
+				break;
+			}
+		}
+		if (i >= s.size()) //不存在时
+			cout << -1 << endl;
+	}
+	return 0;
+}
