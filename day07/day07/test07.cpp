@@ -391,3 +391,150 @@
 //	cout << res << endl;
 //	return 0;
 //}
+
+////最小公倍数
+//#include <iostream>
+//using namespace std;
+//
+//int main()
+//{
+//	int a, b;
+//	int c = 0;
+//	while (cin >> a >> b)
+//	{
+//		while (++c)
+//		{
+//			if (c % a == 0 && c % b == 0)
+//			{
+//				cout << c << endl;
+//				break;
+//			}
+//		}
+//		c = 0;
+//	}
+//	system("pause");
+//	return 0;
+//}
+
+//翻转字符串
+//class Solution {
+//public:
+//	void reverseString(vector<char>& s) {
+//		if (s.empty())
+//			return;
+//
+//		int start = 0;
+//		int end = s.size() - 1;
+//		while (start < end)
+//		{
+//			swap(s[start], s[end]);
+//			start++;
+//			end--;
+//		}
+//	}
+//};
+
+//字符串中第一个唯一字符
+//class Solution {
+//public:
+//	int firstUniqChar(string s) {
+//		int count[256] = { 0 };
+//		for (int i = 0; i < s.size(); i++) //// 统计每个字符出现的次数
+//			count[s[i]] += 1;
+//
+//
+//		for (int i = 0; i < s.size(); i++) //找只出现一次的字符
+//		{
+//			if (count[s[i]] == 1) //第一个不重复返回下标
+//				return i;
+//		}
+//		return -1; //不存在，返回-1
+//	}
+//};
+
+////字符串最后一个单词的长度
+//#include <iostream>
+//#include <string>
+//
+//using namespace std;
+//
+//int main()
+//{
+//	string s;
+//	while (getline(cin, s))
+//	{
+//		size_t tmp = s.rfind(" "); //从后往前字符串中第一个空格位置
+//		cout << s.size() - tmp - 1 << endl; //s.size() 总大小 -tmp 最后一个单词+空格大小 -1 最后一个单词大小
+//		 
+//	}
+//	system("pause");
+//	return 0;
+//}
+
+
+//回文字符串
+//普通法解决
+//class Solution {
+//	bool IsNumberOrLetter(char c)
+//	{
+//		if ((c >= '0' && c <= '9') || (c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'))
+//			return true;
+//		return false;
+//	}
+//public:
+//	bool isPalindrome(string s) {
+//		if (s.empty())
+//			return true;
+//
+//		int begin = 0;
+//		int end = s.size() - 1;
+//		while (begin < end)
+//		{
+//			while (begin < end) //从前往后找一个数字字符或者字母
+//			{
+//				if (IsNumberOrLetter(s[begin]))
+//					break;
+//				++begin;
+//			}
+//
+//			while (begin < end)//从后往前找一个数字字符或者字母
+//			{
+//				if (IsNumberOrLetter(s[end]))
+//					break;
+//				--end;
+//			}
+//
+//			if (begin < end) //检测begint和end位置字符是否相等或是否不区分大小的相等
+//			{
+//				if ((s[begin] + 32 - 'a') % 32 != (s[end] + 32 - 'a') % 32)
+//					return false;
+//				++begin;
+//				--end;
+//			}
+//		}
+//		return true;
+//	}
+//};
+
+////内置函数解决
+//class Solution {
+//public:
+//	bool isPalindrome(string s) {
+//		string str = ""; //定义一个空字符串
+//
+//		//将s字符串遍历：将数字、字母且大写转为小写的字母均存在str字符串中
+//		for (auto c : s) //C++11 auto用法
+//		{
+//			if (isalnum(c)) //isalnum()：是否为字母或者数字
+//				str += tolower(c); //tolower()：字母大写转小写
+//		}
+//
+//		//首尾指针遍历str字符串，判断是否相等
+//		for (int i = 0, j = str.size() - 1; i < j; i++, j--)
+//		{
+//			if (str[i] != str[j])
+//				return false;
+//		}
+//		return true;
+//	}
+//};
