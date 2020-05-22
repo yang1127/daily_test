@@ -538,3 +538,23 @@
 //		return true;
 //	}
 //};
+
+////最难的问题
+
+//#include <iostream>
+//using namespace std;
+//
+//int main()
+//{
+//	char c;
+//	while ((c = getchar()) != EOF)
+//	{
+//		if (c >= 'A' && c <= 'Z')
+//		{
+//			c = (c > 'E') ? (c - 5) : (c + 21);
+//		}
+//		putchar(c);
+//	}
+//	system("pause");
+//	return 0;
+//}
