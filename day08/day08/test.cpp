@@ -320,41 +320,143 @@
 //	return 0;
 //}
 
-#include<iostream>
-#include <iomanip>
-#include<algorithm>
-#include<vector>
-using namespace std;
+//#include<iostream>
+//#include <iomanip>
+//#include<algorithm>
+//#include<vector>
+//using namespace std;
+//
+//int main()
+//{
+//	int n, m, k;
+//	while (cin >> n >> m >> k) 
+//	{
+//		// 用来保存蘑菇地图
+//		vector<vector<int> > table((n + 1), vector<int>(m + 1));
+//		// 构造蘑菇地图
+//		int x, y;
+//		for (int i = 0; i < k; i++) 
+//		{
+//			cin >> x >> y;
+//			table[x][y] = 1;
+//		}
+//		//P[i][j]表示不碰到蘑菇走到i，j的概率
+//		vector<vector<double> > P((n + 1), vector<double>(m + 1));
+//		P[1][1] = 1.0; //起点概率为1
+//		for (int i = 1; i <= n; i++) 
+//		{
+//			for (int j = 1; j <= m; j++)
+//			{
+//				if (!(i == 1 && j == 1))  //跳过起点
+//				{
+//					P[i][j] = P[i - 1][j] * (j == m ? 1 : 0.5) + P[i][j - 1] * (i == n ? 1 : 0.5); //边界的时候，概率为1
+//					if (table[i][j] == 1) 
+//						P[i][j] = 0; //如果该点有蘑菇，概率置为0
+//				}
+//			}
+//		}
+//		cout << fixed << setprecision(2) << P[n][m] << endl;
+//	}
+//}
+//斐波那契
+//class Solution {
+//public:
+//	int Fibonacci(int n) {
+//		if (n == 0)
+//			return 0;
+//		if (n == 1 || n == 2)
+//			return 1;
+//
+//		int fn1 = 1, fn2 = 0;
+//		int fn;
+//		for (int i = 2; i <= n; ++i)
+//		{
+//			fn = fn1 + fn2;
+//			//更新状态
+//			fn2 = fn1;
+//			fn1 = fn;
+//		}
+//		return fn;
+//	}
+//};
 
-int main()
-{
-	int n, m, k;
-	while (cin >> n >> m >> k) 
-	{
-		// 用来保存蘑菇地图
-		vector<vector<int> > table((n + 1), vector<int>(m + 1));
-		// 构造蘑菇地图
-		int x, y;
-		for (int i = 0; i < k; i++) 
-		{
-			cin >> x >> y;
-			table[x][y] = 1;
-		}
-		//P[i][j]表示不碰到蘑菇走到i，j的概率
-		vector<vector<double> > P((n + 1), vector<double>(m + 1));
-		P[1][1] = 1.0; //起点概率为1
-		for (int i = 1; i <= n; i++) 
-		{
-			for (int j = 1; j <= m; j++)
-			{
-				if (!(i == 1 && j == 1))  //跳过起点
-				{
-					P[i][j] = P[i - 1][j] * (j == m ? 1 : 0.5) + P[i][j - 1] * (i == n ? 1 : 0.5); //边界的时候，概率为1
-					if (table[i][j] == 1) 
-						P[i][j] = 0; //如果该点有蘑菇，概率置为0
-				}
-			}
-		}
-		cout << fixed << setprecision(2) << P[n][m] << endl;
-	}
-}
+//变态青蛙
+//class Solution {
+//public:
+//	int jumpFloorII(int number) {
+//		if (number <= 0)
+//			return 0;
+//		if (number == 1)
+//			return 1;
+//		int ret = 1;
+//		for (int i = 2; i <= number; ++i)
+//		{
+//			//状态转移：F(i) = 2 * F(i - 1)
+//			ret *= 2;
+//		}
+//		return ret;
+//	}
+//};
+
+//最大连续子数组和
+//class Solution {
+//public:
+//	int FindGreatestSumOfSubArray(vector<int> array) {
+//		int len = array.size();
+//		int* dp = new int[len];
+//		初始化
+//		dp[0] = array[0];
+//		int MaxDp = dp[0];
+//		for (int i = 1; i < len; ++i)
+//		{
+//			转移方程 F[i] = max(F(i-1) + array[i], array[i])
+//			dp[i] = max(dp[i - 1] + array[i], array[i]);
+//			返回最大值
+//			MaxDp = max(MaxDp, dp[i]);
+//		}
+//		return MaxDp;
+//	}
+//};
+
+//最大子序列和
+//class Solution {
+//public:
+//	int maxSubArray(vector<int>& nums) {
+//		int numSize = nums.size();
+//		int TmpSum = nums[0];
+//		int MaxSum = nums[0];
+//		for (int i = 1; i < numSize; i++)
+//		{
+//			TmpSum = max(TmpSum + nums[i], nums[i]);
+//			MaxSum = max(MaxSum, TmpSum);
+//		}
+//		return MaxSum;
+//	}
+//};
+
+//分割字符串
+//class Solution {
+//public:
+//	bool wordBreak(string s, unordered_set<string> &dict) {
+//		if (s.empty())
+//			return false;
+//		int len = s.size();
+//		vector<bool> canBreak(len + 1, false); //len+1 右F[0]辅助
+//		//初始化 F(0) = true;
+//		canBreak[0] = true;
+//		for (int i = 1; i <= len; ++i)
+//		{
+//			//转移方程：F(i): j<i && [j+1, i]
+//			for (int j = i - 1; j >= 0; --j)
+//			{
+//				if (canBreak[j] && dict.find(s.substr(j, i - j)) != dict.end())
+//				{
+//					canBreak[i] = true;
+//					break;
+//				}
+//			}
+//		}
+//		//返回结果 F(s.size())
+//		return canBreak[len];
+//	}
+//};
