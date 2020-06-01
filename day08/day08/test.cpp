@@ -100,7 +100,8 @@
 //		cout << endl;
 //	}
 //	return 0;
-//}
+//}
+
 //substr
 //#include<iostream>
 //#include<string>
@@ -277,7 +278,9 @@
 //		cout << result - 1 << endl;
 //	}
 //	return 0;
-//}//#include <iostream>
+//}
+
+//#include <iostream>
 //#include <string>
 //#include <vector>
 //#include <algorithm>
@@ -357,7 +360,8 @@
 //		}
 //		cout << fixed << setprecision(2) << P[n][m] << endl;
 //	}
-//}
+//}
+
 //斐波那契
 //class Solution {
 //public:
@@ -461,7 +465,7 @@
 //	}
 //};
 
-#include<stdio.h>
+#/*include<stdio.h>
 
 int main()
 {
@@ -477,4 +481,50 @@ int main()
 		printf("%lld\n", der[n]);
 	}
 	return 0;
-}
+}*/
+
+//三角矩阵
+//class Solution {
+//public:
+//	int minimumTotal(vector<vector<int> > &triangle) {
+//		//初始化 F(0,0) = triangle[0][0]
+//		vector<vector<int>> minPathSum(triangle); //二维数组
+//		int row = triangle.size(); //只需要行数
+//		for (int i = 1; i < row; ++i) //从第二行开始
+//		{
+//			for (int j = 0; j <= i; ++j)
+//			{
+//				//F(i,0)第一个数
+//				if (j == 0)
+//					minPathSum[i][j] = minPathSum[i - 1][j] + triangle[i][0];
+//				//F(i,i)最后一个数
+//				else if (i == j)
+//					minPathSum[i][j] = minPathSum[i - 1][j - 1] + triangle[i][i];
+//				//F(i,j)
+//				else
+//					minPathSum[i][j] = min(minPathSum[i - 1][j - 1], minPathSum[i - 1][j]) + triangle[i][j];
+//			}
+//		}
+//		int ret = minPathSum[row - 1][0]; //下标均从0开始，row最小值为1
+//		for (int i = 1; i < row; ++i)
+//			ret = min(minPathSum[row - 1][i], ret); //从第二行开始比较
+//		return ret;
+//	}
+//};
+
+class Solution {
+public:
+	int minimumTotal(vector<vector<int> > &triangle) {
+		//初始化F(row - 1, j) = triangle[row -1][j]
+		vector<vector<int>> minPathSum(triangle);
+		int row = minPathSum.size();
+		for (int i = row - 2; i >= 0; --i) //从倒数第二行开始
+		{
+			for (int j = 0; j <= i; ++j)
+			{
+				minPathSum[i][j] = min(minPathSum[i + 1][j], minPathSum[i + 1][j + 1]) + triangle[i][j];
+			}
+		}
+		return minPathSum[0][0];
+	}
+};
