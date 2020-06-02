@@ -512,19 +512,86 @@ int main()
 //	}
 //};
 
-class Solution {
-public:
-	int minimumTotal(vector<vector<int> > &triangle) {
-		//初始化F(row - 1, j) = triangle[row -1][j]
-		vector<vector<int>> minPathSum(triangle);
-		int row = minPathSum.size();
-		for (int i = row - 2; i >= 0; --i) //从倒数第二行开始
-		{
-			for (int j = 0; j <= i; ++j)
-			{
-				minPathSum[i][j] = min(minPathSum[i + 1][j], minPathSum[i + 1][j + 1]) + triangle[i][j];
-			}
-		}
-		return minPathSum[0][0];
-	}
-};
+//class Solution {
+//public:
+//	int minimumTotal(vector<vector<int> > &triangle) {
+//		//初始化F(row - 1, j) = triangle[row -1][j]
+//		vector<vector<int>> minPathSum(triangle);
+//		int row = minPathSum.size();
+//		for (int i = row - 2; i >= 0; --i) //从倒数第二行开始
+//		{
+//			for (int j = 0; j <= i; ++j)
+//			{
+//				minPathSum[i][j] = min(minPathSum[i + 1][j], minPathSum[i + 1][j + 1]) + triangle[i][j];
+//			}
+//		}
+//		return minPathSum[0][0];
+//	}
+//};
+
+////路径总数
+//class Solution {
+//public:
+//	/**
+//	 *
+//	 * @param m int整型
+//	 * @param n int整型
+//	 * @return int整型
+//	 */
+//	int uniquePaths(int m, int n) {
+//		// write code here
+//		//初始化 F(0, j) = F(i, 0) = 1
+//		vector<vector<int>> pathNum(m, vector<int>(n, 1)); //m行n列矩阵,n列初始化为1
+//		for (int i = 1; i < m; ++i)
+//		{
+//			for (int j = 1; j < n; ++j)
+//				pathNum[i][j] = pathNum[i - 1][j] + pathNum[i][j - 1];
+//		}
+//		return pathNum[m - 1][n - 1];
+//	}
+//};
+
+////路径总数2
+//class Solution {
+//public:
+//	/**
+//	 *
+//	 * @param obstacleGrid int整型vector<vector<>>
+//	 * @return int整型
+//	 */
+//	int uniquePathsWithObstacles(vector<vector<int> >& obstacleGrid) {
+//		// write code here
+//		if (obstacleGrid.empty())
+//			return 0;
+//		int row = obstacleGrid.size();
+//		int col = obstacleGrid[0].size();
+//		vector<vector<int>> pathSum(row, vector<int>(col, 0));
+//		//F(i,0) F(0,j)
+//		for (int i = 0; i < row; ++i)
+//		{
+//			if (obstacleGrid[i][0] == 0)
+//				pathSum[i][0] = 1;
+//			else
+//				break; //从(i,0)后面的点均走不通
+//		}
+//		for (int j = 0; j < col; ++j)
+//		{
+//			if (obstacleGrid[0][j] == 0)
+//				pathSum[0][j] = 1;
+//			else
+//				break;//从(0,j)后面的点均走不通
+//		}
+//
+//		//状态转移方程
+//		for (int i = 1; i < row; ++i)
+//		{
+//			for (int j = 1; j < col; ++j)
+//			{
+//				if (obstacleGrid[i][j] == 0)
+//					pathSum[i][j] = pathSum[i - 1][j] + pathSum[i][j - 1];
+//			}
+//		}
+//		return pathSum[row - 1][col - 1];
+//	}
+//};
+
