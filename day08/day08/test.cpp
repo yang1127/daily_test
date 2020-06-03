@@ -595,3 +595,39 @@ int main()
 //	}
 //};
 
+class Solution {
+public:
+	/**
+	 *
+	 * @param grid int整型vector<vector<>>
+	 * @return int整型
+	 */
+	int minPathSum(vector<vector<int> >& grid) {
+		// write code here
+		if (grid.empty())
+			return 0;
+		int row = grid.size();
+		int col = grid[0].size();
+		vector<vector<int>> minPathSum(row, vector<int>(col, 0));
+		minPathSum[0][0] = grid[0][0];
+		//F(i,0)
+		for (int i = 1; i != row; ++i)
+		{
+			minPathSum[i][0] = minPathSum[i - 1][0] + grid[i][0];
+		}
+		//F(0,j)
+		for (int j = 1; j != col; ++j)
+		{
+			minPathSum[0][j] = minPathSum[0][j - 1] + grid[0][j];
+		}
+		//F(i,j)
+		for (int i = 1; i < row; ++i)
+		{
+			for (int j = 1; j < col; ++j)
+			{
+				minPathSum[i][j] = min(minPathSum[i - 1][j], minPathSum[i][j - 1]) + grid[i][j];
+			}
+		}
+		return minPathSum[row - 1][col - 1];
+	}
+};
