@@ -1,0 +1,59 @@
+#include<iostream>
+#include<vector>
+using namespace std;
+
+
+int main()
+{
+    int n;
+    cin >> n;
+    vector<int> v(n);
+    for (int i = 0; i < n; ++i)
+        cin >> v[i];
+    
+    vector<int> dp(n);    //dp[i]是以v[i]结尾的子数组的最大和
+    dp[0] = v[0];
+    int res = dp[0];
+    for (int i = 1; i < n; ++i) {
+        //dp[i] = dp[i-1]>0 ? dp[i-1]+v[i] : v[i];
+        dp[i] = max(dp[i - 1] + v[i], v[i]);
+        res = max(res, dp[i]);
+    }
+    cout << res << endl;
+    return 0;
+}
+
+class Solution {
+public:
+int StrToInt(string str)
+{
+	if(str.empty())
+		return 0;
+
+	int symbol = 1;
+	if(str[0] == '-') //处理负号
+	{
+		symbol = -1;
+		str[0] = '0'; //这里是字符'0',不是0
+	}
+	else if(str[0] == '+') //处理正号
+	{
+		symbol = 1;
+		str[0] = '0';
+	}
+
+	int sum = 0;
+	for(int i=0;i<str.size();++i)
+	{
+		if(str[i] < '0' || str[i] > '9')
+		{
+			sum = 0;
+			break;
+	}
+ 
+	sum = sum *10 + str[i] - '0';
+ 
+	}
+	return symbol * sum;
+}
+};

@@ -1,0 +1,44 @@
+#include <iostream>
+using namespace std;
+
+/*
+int main()
+{
+	int a[] = {1, 2, 3, 4};
+	int *b = a;
+	*b += 2;
+	*(b + 2) = 2;
+	b++;
+	cout << *b << endl;
+	cout << *(b + 2) <<endl;
+	return 0;
+}
+*/
+
+
+#include <iostream>       
+#include <vector>
+using namespace std;
+int main(void)
+{
+    vector<int>array;
+    array.push_back(100);
+    array.push_back(300);
+    array.push_back(300);
+    array.push_back(300);
+    array.push_back(300);
+    array.push_back(500);
+    vector<int>::iterator itor;
+    for(itor=array.begin();itor!=array.end();itor++)
+    {
+        if(*itor==300)
+        {
+            itor=array.erase(itor);
+        }
+    }
+    for(itor=array.begin();itor!=array.end();itor++)
+    {
+            cout<<*itor<<" ";
+    }
+  return 0;
+}
