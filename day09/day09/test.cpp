@@ -162,50 +162,198 @@
 //}
 
 //字符串相加
-class Solution {
-public:
-	string addStrings(string num1, string num2) 
-	{
-		int LSize = num1.size();
-		int RSize = num2.size();
+//class Solution {
+//public:
+//	string addStrings(string num1, string num2) 
+//	{
+//		int LSize = num1.size();
+//		int RSize = num2.size();
+//
+//		// 以长字符串作为外部循环
+//		if (LSize < RSize)
+//		{
+//			num1.swap(num2);
+//			swap(LSize, RSize);
+//		}
+//
+//		string strRet;
+//		strRet.reserve(LSize + 1);
+//
+//		char cRet = 0;
+//		char cstep = 0;
+//
+//		for (size_t i = 0; i < LSize; ++i)
+//		{
+//			cRet = num1[LSize - i - 1] - '0' + cstep;
+//			cstep = 0;
+//
+//			if (i < RSize)
+//			{
+//				cRet += num2[RSize - i - 1] - '0';
+//			}
+//
+//			if (cRet >= 10)
+//			{
+//				cRet -= 10;
+//				cstep = 1;
+//			}
+//
+//			strRet += cRet + '0';
+//		}
+//
+//		if (cstep)
+//			strRet += '1';
+//
+//		reverse(strRet.begin(), strRet.end());
+//
+//		return strRet;
+//	}
+//};
 
-		// 以长字符串作为外部循环
-		if (LSize < RSize)
-		{
-			num1.swap(num2);
-			swap(LSize, RSize);
-		}
+//匹配括号
+//class Parenthesis {
+//public:
+//	bool chkParenthesis(string A, int n) {
+//		// write code here
+//		stack<char> s;
+//		for (auto e : A)
+//		{
+//			switch (e)
+//			{
+//			case '(':
+//				s.push(A);
+//				break;
+//			case ')':
+//			{
+//				if (s.empty() || s.top() != '(')
+//					return  false;
+//				else
+//					s.pop();
+//			}
+//			break;
+//			default:
+//				return false;
+//			}
+//		}
+//		return true;
+//	}
+//};
 
-		string strRet;
-		strRet.reserve(LSize + 1);
+//字符串两种方式排序
 
-		char cRet = 0;
-		char cstep = 0;
+//#include <iostream>
+//#include <vector>
+//#include <string>
+//
+//using namespace std;
+//
+//int main()
+//{
+//	int n;
+//	cin >> n;
+//	vector<string> v;
+//	v.resize(n);
+//	for (auto& e : v)
+//		cin >> e;
+//
+//	bool LEN = true; //长度排列 -> 长度比较
+//    bool ASCII = true; //字典序排列 -> ASCII比较
+//
+//	//长度
+//	for (size_t i = 1; i < v.size(); ++i)
+//	{
+//		if (v[i - 1].size() >= v[i].size())
+//		{
+//			LEN = false;
+//			break;
+//		}
+//	}
+//
+//	//字典
+//	for (size_t i = 1; i < v.size(); ++i)
+//	{
+//		if (v[i - 1] >= v[i])
+//		{
+//			ASCII = false;
+//			break;
+//		}
+//	}
+//
+//	if (LEN && ASCII)
+//		cout << "both" << endl;
+//	else if (!LEN && ASCII)
+//		cout << "lexicographically" << endl;
+//	else if (LEN && !ASCII)
+//		cout << "lengths" << endl;
+//	else
+//		cout << "none" << endl;
+//
+//	system("pause");
+//	return 0;
+//}
 
-		for (size_t i = 0; i < LSize; ++i)
-		{
-			cRet = num1[LSize - i - 1] - '0' + cstep;
-			cstep = 0;
+//最小公倍数
 
-			if (i < RSize)
-			{
-				cRet += num2[RSize - i - 1] - '0';
-			}
+//#include<iostream>
+//using namespace std;
+//
+//int gcd(int a, int b) //辗转相除法
+//{
+//	int r;
+//	while (r = a % b) 
+//	{
+//		a = b;
+//		b = r;
+//	}
+//	return b;
+//}
+//int main()
+//{
+//	int a, b;
+//	while (cin >> a >> b) 
+//		cout << a * b / gcd(a, b) << endl;
+//
+//	system("pause");
+//	return 0;
+//}
 
-			if (cRet >= 10)
-			{
-				cRet -= 10;
-				cstep = 1;
-			}
+//加法
+//class UnusualAdd {
+//public:
+//	int addAB(int A, int B) {
+//		// write code here
+//		//位运算
+//		int sum = 0, carry = 0;
+//		while (B)
+//		{
+//			sum = A ^ B;
+//			carry = (A & B) << 1;
+//			A = sum;
+//			B = carry;
+//		}
+//		return sum;
+//	}
+//};
 
-			strRet += cRet + '0';
-		}
+//求路径
+#include<iostream>
+using namespace std;
 
-		if (cstep)
-			strRet += '1';
+int pathNum(int n, int m)
+{
+	if (n > 1 && m > 1) // b情况，递归
+		return pathNum(n - 1, m) + pathNum(n, m - 1);
+	else if (((n >= 1) && (m == 1)) || ((n == 1) && (m >= 1))) // a情况，终止条件
+		return n + m;
+	else // 格子为0时， 路径为0	
+		return 0;
+}
 
-		reverse(strRet.begin(), strRet.end());
+int main()
+{
+	int n, m;
+	while (cin >> n >> m)
+		cout << pathNum(n, m) << endl;
 
-		return strRet;
-	}
-};
+	return 0;
+}
