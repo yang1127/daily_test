@@ -154,4 +154,107 @@
 //	while (cin >> a >> b)
 //		cout << minDistance(a, b) << endl;
 //	return 0;
-//}
+//}////·¢ÓÊ¼þ//#include <iostream>
+//using namespace std;
+//
+//int main()
+//{
+//	long long arr[21] = { 0, 0, 1 };
+//	int i;
+//	for (i = 3; i < 21; i++) {
+//		arr[i] = (i - 1) * (arr[i - 2] + arr[i - 1]);
+//	}
+//	int n;
+//	while (scanf("%d", &n) != EOF)
+//	{
+//		printf("%lld\n", arr[n]);
+//	}
+//	return 0;
+//}//#include <iostream>
+//#include <vector>
+//#include <algorithm>
+//
+//using namespace std;
+//
+//int main() 
+//{
+//	int n;
+//	while (cin >> n) 
+//	{
+//		vector<int> height(n, 0);
+//		for (int i = 0; i < n; i++) 
+//			cin >> height[i];
+//
+//		vector<int> f(n, 1);
+//		int result = 1;
+//		for (int i = 1; i < n; i++) 
+//		{
+//			for (int j = 0; j < i; j++) 
+//			{
+//				if (height[i] > height[j]) 
+//				{
+//					f[i] = max(f[i], f[j] + 1);
+//				}
+//			}
+//			result = max(result, f[i]);
+//		}
+//		cout << result << endl;
+//	}
+//	return 0;
+//}
+
+//#include<iostream>
+//#include<string>
+//
+//using namespace std;
+//
+//int main() 
+//{
+//	string s;
+//	while (getline(cin, s)) 
+//	{
+//		int len = s.length();
+//		for (int i = 0; i < len; i++)
+//		{
+//			if (s[i] >= '0'&& s[i] <= '9')
+//				cout << s[i];
+//		}
+//		cout << endl;
+//	}
+//	return 0;
+//}
+////ÖÖ²Ý
+//#include <iostream>
+//#include <vector>
+//#include <algorithm>
+//
+//using namespace std;
+//
+//int main()
+//{
+//	int n, m, x;
+//	int sum = 0;
+//	while (cin >> n >> m >> x)
+//	{
+//		vector<int> v(n);
+//		if ((n < 1 && n > 1e5) && (m < 1 && m > 1e5) && (x < 1 && x > 1e5))
+//			return 0;
+//		else
+//		{
+//			for (int i = 0; i < n; i++)
+//			{
+//				cin >> v[i];
+//
+//				if (v[i] < 1 && v[i] > 1e9)
+//					return 0;
+//			}
+//			sort(v.begin(), v.end());
+//			sum = v[0] + m * x;
+//		}
+//		cout << sum << endl;
+//	}
+//
+//	system("pause");
+//	return 0;
+//}
+
