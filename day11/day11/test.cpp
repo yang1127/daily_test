@@ -53,7 +53,8 @@
 //	system("pause");
 //	return 0;
 //}
-//#include <string>
+
+//#include <string>
 //#include <iostream>
 //#include <algorithm>
 //
@@ -154,7 +155,10 @@
 //	while (cin >> a >> b)
 //		cout << minDistance(a, b) << endl;
 //	return 0;
-//}////发邮件//#include <iostream>
+//}
+
+////发邮件
+//#include <iostream>
 //using namespace std;
 //
 //int main()
@@ -170,7 +174,9 @@
 //		printf("%lld\n", arr[n]);
 //	}
 //	return 0;
-//}//#include <iostream>
+//}
+
+//#include <iostream>
 //#include <vector>
 //#include <algorithm>
 //
@@ -201,7 +207,8 @@
 //		cout << result << endl;
 //	}
 //	return 0;
-//}
+//}
+
 
 //#include<iostream>
 //#include<string>
@@ -222,7 +229,8 @@
 //		cout << endl;
 //	}
 //	return 0;
-//}
+//}
+
 ////种草
 //#include <iostream>
 //#include <vector>
@@ -255,6 +263,113 @@
 //	}
 //
 //	system("pause");
+//	return 0;
+//}
+
+////网上
+//// 借助 hash 表完成字母和数字之间的转换即可. 注意处理大小写的情况.
+//#include<iostream>
+//#include<vector>
+//#include<string>
+//#include<algorithm>
+//#include<functional>
+//#include <map>
+//#include <set>
+//#include <unordered_set>
+//#include <unordered_map>
+//#include <exception>
+//#include <iomanip>
+//#include <memory>
+//#include <sstream>
+//#define INF 1000000
+//using namespace std;
+//int main(int argc, char** argv)
+//{
+//	unordered_map<char, char> dic;
+//	dic.emplace('A', '2');
+//	dic.emplace('B', '2');
+//	dic.emplace('C', '2');
+//	dic.emplace('D', '3');
+//	dic.emplace('E', '3');
+//	dic.emplace('F', '3');
+//	dic.emplace('G', '4');
+//	dic.emplace('H', '4');
+//	dic.emplace('I', '4');
+//	dic.emplace('J', '5');
+//	dic.emplace('K', '5');
+//	dic.emplace('L', '5');
+//	dic.emplace('M', '6');
+//	dic.emplace('N', '6');
+//	dic.emplace('O', '6');
+//	dic.emplace('P', '7');
+//	dic.emplace('Q', '7');
+//	dic.emplace('R', '7');
+//	dic.emplace('S', '7');
+//	dic.emplace('T', '8');
+//	dic.emplace('U', '8');
+//	dic.emplace('V', '8');
+//	dic.emplace('W', '9');
+//	dic.emplace('X', '9');
+//	dic.emplace('Y', '9');
+//	dic.emplace('Z', '9');
+//	int n;
+//	while (cin >> n && n > 0)
+//	{
+//		set<string> hs;
+//		string s;
+//		for (int i = 0; i < n; ++i)
+//		{
+//			cin >> s;
+//			string p = "";
+//			for (auto& c : s)
+//			{
+//				if (isdigit(c)) p += c;
+//				else if (isupper(c)) p += dic[c];
+//			}
+//			if (p.size() != 7) continue;
+//			p = p.substr(0, 3) + "-" + p.substr(3);
+//			hs.emplace(p);
+//		}
+//		for (auto& phone : hs) cout << phone << endl;
+//		cout << endl;
+//	}
+//	return 0;
+//}//#include<iostream>
+//#include<string>
+//#include<map>
+//using namespace std;
+//
+//int main()
+//{
+//	string str, res;
+//	while (cin >> str >> res)
+//	{
+//		// sta 这个变量表示当前是否满足 B 盒的球在 A 盒中存在, 并且数目不大于 A 盒.
+//		bool sta = true;
+//		// strdata 保存了 A 盒的球. key 为球的种类, value 为球的数目
+//		// resdata 保存了 B 盒的球. key 为球的种类, value 为球的数目
+//		map<char, int> strdata, resdata;
+//		// 统计两个盒子中的球的类别和数目
+//		for (auto c : str)
+//			strdata[c]++;
+//		for (auto c : res)
+//			resdata[c]++;
+//		// 在 B 盒中遍历球的种类, 和 A 盒的同类球进行数目对比.
+//		for (map<char, int>::iterator it = resdata.begin(); it != resdata.end(); it++)
+//		{
+//			// 只要有一种球数目不满足条件, 就用 sta 标记为 false
+//			// 反之, 必须所有种类的球都能够满足条件, 才能保持为 true
+//			if (strdata[it->first] < it->second)
+//			{
+//				sta = false;
+//				break;
+//			}
+//		}
+//		if (true == sta)
+//			cout << "Yes" << endl;
+//		else
+//			cout << "No" << endl;
+//	}
 //	return 0;
 //}
 
