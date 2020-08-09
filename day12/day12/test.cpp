@@ -289,4 +289,141 @@
 //}
 
 
+//#include <iostream>
+//#include <string>
+//
+//using namespace std;
+//
+//int main()
+//{
+//	string s1; //第一个字符串
+//	string s2; //第二个字符串
+//	getline(cin, s1);
+//	getline(cin, s2);
+//	char arr[256] = { 0 };
+//	for (int i = 0; i < s2.size(); ++i) //遍历s2
+//		arr[s2[i]]++; //将s2下标置位1
+//
+//	string tmp; //最后放置的字符串
+//	for (int j = 0; j < s1.size(); ++j) //遍历s1
+//	{
+//		if (arr[s1[j]] == 0)
+//			tmp += s1[j];
+//	}
+//
+//	cout << tmp << endl;
+//	system("pause");
+//	return 0;
+//}
 
+//#include <iostream>
+//using namespace std;
+//
+//int main()
+//{
+//	int n, a, b;
+//	int arr[101][101] = { 0 }; //构造二维数组并初始化为0
+//	while (cin >> n)
+//	{
+//		for (int i = 0; i < n; i++)
+//		{
+//			scanf("%d %d", &a, &b);
+//			arr[a][b] = 1; //输入学号和成绩，并在对应的二维数组里存1
+//		}
+//
+//		for (int i = 0; i < 101; i++)
+//		{
+//			for (int j = 0; j <= n; j++)
+//			{
+//				if (arr[j][i])
+//					////对二维数组里值为1的单元按列查找并输出其行值和列值
+//					//（即按成绩从小到大的顺序输出学号和成绩）
+//					cout << j << ' '<< i << endl; 
+//			}
+//		}
+//	}
+//
+//	return 0;
+//}
+
+//查找二维数组
+//class Solution {
+//public:
+//	bool Find(int target, vector<vector<int> > array) {
+//		int i = 0; //行
+//		int j = array[0].size() - 1; //列 //第一行的长度-1即为列大小
+//
+//		while (i < array.size() && j >= 0) //行只需不超过数组大小、列随着行变
+//		{
+//			if (target < array[i][j])
+//				j--; //不可能出现在该列,列需往左走
+//			else if (target > array[i][j])
+//				i++; //不可能出现在该行，行需往下走
+//			else
+//				return true;
+//		}
+//		return false;
+//	}
+//};
+
+//旋转数组的最小数字
+//class Solution {
+//public:
+//	int minNumberInRotateArray(vector<int> rotateArray) {
+//
+//		if (rotateArray.empty())
+//			return 0;
+//
+//		int min = rotateArray[0];
+//		for (int i = 0; i < rotateArray.size(); i++)
+//		{
+//
+//			if (min > rotateArray[i])
+//			{
+//				//找旋转后最头的值，能大于的第一个数，即为数组的最小值
+//				min = rotateArray[i];
+//				break;
+//			}
+//		}
+//		return min;
+//	}
+//};
+
+class Solution {
+public:
+	int minNumberInRotateArray(vector<int> rotateArray) {
+		if (rotateArray.empty())
+			return 0;
+
+		int left = 0;
+		int right = rotateArray.size() - 1;
+		int mid = 0;
+		while (rotateArray[left] >= rotateArray[right])//要一直满足该条件，以证明旋转特性
+		{
+			if (right - left == 1) //两个下标已经相邻了
+			{
+				mid = right;
+				break;
+			}
+
+			mid = left + ((right - left) >> 1); //注意操作符优先级
+			if (rotateArray[mid] == rotateArray[left] && rotateArray[left] == rotateArray[right])
+			{
+				//无法判定目标数据在mid左侧，还是右侧我们采用线性遍历方式
+				int result = rotateArray[left];
+				for (int i = left + 1; i < right; i++)
+				{
+					if (result > rotateArray[i])
+						result = rotateArray[i];
+				}
+				return result;
+			}
+
+			if (rotateArray[mid] >= rotateArray[left]) //试想两者相等，隐含条件rotateArray[left] >= rotateArray[right] 说明mid在前半部分
+				left = mid;
+			else //说明mid在前半部分	
+				right = mid;
+		}
+		return rotateArray[mid];
+	}
+};
