@@ -236,37 +236,120 @@
 * TreeNode(int x) : val(x), left(NULL), right(NULL) {}
 * };
 */
-class Solution {
+//class Solution {
+//public:
+//	TreeNode* reConstructBinaryTreeCore(vector<int> pre, int preStart, int preEnd, vector<int>
+//		vin, int vinStart, int vinEnd) {
+//		if (preStart > preEnd || vinStart > vinEnd) 
+//				return nullptr;
+//		
+//		TreeNode *root = new TreeNode(pre[preStart]);
+//		for (auto i = vinStart; i <= vinEnd; i++) //在中序序列中，找根节点，可以将数组划分为两部分
+//		{
+//			if (pre[preStart] == vin[i]) 
+//			{
+//				//前序的第一个节点，是root，能将中序划分为两部分
+//				//一棵树，无论前，中，后怎么遍历，元素的个数是不变的
+//				//在实际遍历的时候，前，中，后序遍历，各种遍历方式左右子树的节点都是在一起的
+//				//所以这里重点是要想清楚下标问题
+//				//根据中序，我们能确认左子树的节点个数是：i - vinStart (没有从0开始哦)
+//				//所以，需要从preStart+1，连续i - vinStart个元素，就是左子树的前序序列
+//				root->left = reConstructBinaryTreeCore(pre, preStart + 1, i - vinStart + preStart, vin, vinStart, i - 1);
+//				root->right = reConstructBinaryTreeCore(pre, i - vinStart + preStart + 1, preEnd, vin, i + 1, vinEnd);
+//				break;
+//			}
+//		}
+//		return root;
+//	}
+//
+//	TreeNode* reConstructBinaryTree(vector<int> pre, vector<int> vin) 
+//	{
+//		if (pre.empty() || vin.empty()) 
+//			return nullptr;
+//		
+//		return reConstructBinaryTreeCore(pre, 0, pre.size() - 1, vin, 0, vin.size() - 1);
+//	}
+//};/*//3元组class Solution {
 public:
-	TreeNode* reConstructBinaryTreeCore(vector<int> pre, int preStart, int preEnd, vector<int>
-		vin, int vinStart, int vinEnd) {
-		if (preStart > preEnd || vinStart > vinEnd) 
-				return nullptr;
-		
-		TreeNode *root = new TreeNode(pre[preStart]);
-		for (auto i = vinStart; i <= vinEnd; i++) //在中序序列中，找根节点，可以将数组划分为两部分
+	vector<vector<int>> threeSum(vector<int>& nums) {
+		vector<vector<int>> v; //存放满足三元组的集合
+		sort(nums.begin(), nums.end()); //排序
+		for (int i = 0; i < nums.size(); i++)
 		{
-			if (pre[preStart] == vin[i]) 
+			// a + b + c = 0
+			//a = nums[i], b = nums[left], c = nums[right]
+			int left = i + 1;
+			int right = nums.size() - 1;
+
+			if (nums[i] > 0) //已经从小到大排好序了，若第一个数大于0则无法满足
+				return v;
+
+			if (i > 0 && nums[i] == nums[i - 1]) //去重a：将指针置为最后一个重复的数
+				continue;
+
+			while (right > left)
 			{
-				//前序的第一个节点，是root，能将中序划分为两部分
-				//一棵树，无论前，中，后怎么遍历，元素的个数是不变的
-				//在实际遍历的时候，前，中，后序遍历，各种遍历方式左右子树的节点都是在一起的
-				//所以这里重点是要想清楚下标问题
-				//根据中序，我们能确认左子树的节点个数是：i - vinStart (没有从0开始哦)
-				//所以，需要从preStart+1，连续i - vinStart个元素，就是左子树的前序序列
-				root->left = reConstructBinaryTreeCore(pre, preStart + 1, i - vinStart + preStart, vin, vinStart, i - 1);
-				root->right = reConstructBinaryTreeCore(pre, i - vinStart + preStart + 1, preEnd, vin, i + 1, vinEnd);
-				break;
+				if (nums[i] + nums[left] + nums[right] > 0) //大于right--
+					right--;
+				else if (nums[i] + nums[left] + nums[right] < 0) //小于left++
+					left++;
+				else
+				{
+					v.push_back(vector<int> {nums[i], nums[left], nums[right]});
+
+					//去重b、c, 防止除去0、0、0这种情况
+					while (right > left && nums[left] == nums[left + 1])
+						left++;
+					while (right > left && nums[right - 1] == nums[right])
+						right--;
+
+					left++;
+					right--;
+				}
 			}
 		}
-		return root;
+		return v;
 	}
+};*//*//删除排序数组中的重复项class Solution {
+public:
+	int removeDuplicates(vector<int>& nums) {
+		if (nums.size() == 0)
+			return 0;
 
-	TreeNode* reConstructBinaryTree(vector<int> pre, vector<int> vin) 
-	{
-		if (pre.empty() || vin.empty()) 
-			return nullptr;
-		
-		return reConstructBinaryTreeCore(pre, 0, pre.size() - 1, vin, 0, vin.size() - 1);
+		//双指针
+		int i = 0;
+		for (int j = 1; j < nums.size(); j++)
+		{
+			if (nums[j] != nums[i])
+			{
+				i++; //先加再赋值，否则i指向下一个位置，不是现在比较的数
+				nums[i] = nums[j];
+			}
+		}
+		return i + 1; // 包括开始的值个数
 	}
-};
+};*//*//杨辉三角class Solution {
+public:
+public:
+	vector<vector<int>> generate(int numRows) {
+		vector<vector<int> > v(numRows);
+		for (int i = 0; i < numRows; i++) //边置为1
+		{
+			v[i] = vector<int>(i + 1, 0); //先初始化为0
+			v[i][0] = 1;
+			v[i][i] = 1;
+		}
+
+		if (numRows <= 2)
+			return v;
+
+		for (int i = 2; i < numRows; i++)
+		{
+			for (int j = 1; j < v[i].size() - 1; j++) //首、尾已经置为1
+			{
+				v[i][j] = v[i - 1][j - 1] + v[i - 1][j];
+			}
+		}
+		return v;
+	}
+};*/
