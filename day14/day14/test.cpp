@@ -104,3 +104,66 @@
 //	return 0;
 //}
 
+/*
+//剪枝-斐波那契额
+
+class Solution {
+	//剪枝
+private:
+	unordered_map<int, int> m; //存放剪枝
+public:
+	int Fibonacci(int n) {
+		if (n == 0 || n == 1)
+			return n;
+		if (n == 2)
+			return 1;
+
+		//n-2
+		int ppre = 0;
+		if (m.find(n - 2) == m.end())
+		{
+			//m没有找到剪枝的、插入
+			ppre = Fibonacci(n - 2); //先求出相应的值
+			m.insert({ n - 2, ppre }); //再插入
+		}
+		else //找到
+			ppre = m[n - 2];
+
+		//n-1
+		int pre = 0; //剪枝 n-1可能包含n-2，将n-1置后
+		if (m.find(n - 1) == m.end())
+		{
+			pre = Fibonacci(n - 1); //先求出相应的值
+			m.insert({ n - 1, pre }); //再插入
+		}
+		else
+			pre = m[n - 1];
+
+
+		return ppre + pre;
+	}
+};
+*/
+
+
+//变态青蛙
+//class Solution {
+//public:
+//	int jumpFloor(int number) {
+//		if (number <= 2)
+//			return number;
+//
+//		//f(n) = f(n - 1) + f (n - 2)
+//		//f(0) = 1; f(1) = 1; f(2) = 2;
+//		int* dp = new int[number + 1]; //开空间
+//		dp[0] = 1;
+//		dp[1] = 1;
+//		dp[2] = 1;
+//		for (int i = 2; i <= number; i++)
+//			dp[i] = dp[i - 1] + dp[i - 2];
+//
+//		return dp[number];
+//	}
+//};
+
+
