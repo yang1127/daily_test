@@ -439,3 +439,98 @@ void HeapSort(int* a, int n)
 //	}
 //};
 
+/*
+//返回链表倒数k值
+class Solution {
+public:
+	ListNode* getKthFromEnd(ListNode* head, int k) {
+		ListNode* slow = head;
+		ListNode* fast = head;
+
+		//先快指针走k步，再快慢指针一起走，快指针为空，即slow所指即为所求
+		while (k--)
+		{
+			if (fast == NULL) //fast为空，即链表为空
+				return NULL;
+			else
+				fast = fast->next;
+		}
+
+		while (fast)
+		{
+			slow = slow->next;
+			fast = fast->next;
+		}
+
+		return slow;
+	}
+};
+*/
+
+/*
+//二叉树的镜像
+class Solution {
+public:
+	TreeNode* mirrorTree(TreeNode* root) {
+		if (root == NULL)
+			return NULL;
+
+		//值交换
+		swap(root->left, root->right);
+		mirrorTree(root->left);
+		mirrorTree(root->right);
+
+		return root;
+
+	}
+};
+*/
+
+/*
+//打印1-最大n数
+class Solution {
+public:
+	vector<int> printNumbers(int n) {
+		vector<int> v;
+		if (n == 0)
+			return v;
+
+		for (int i = 1; i < pow(10, n); i++)
+			v.push_back(i);
+
+		return v;
+	}
+};
+*/
+
+class Solution {
+public:
+	string replaceSpace(string s) {
+		int count = 0;
+		for (int i = 0; i < s.size(); i++)
+		{
+			if (s[i] == ' ')
+				count++;
+		}
+
+		//新、旧指针
+		int oldsize = s.size();
+		s.resize(s.size() + count * 2);
+		int newsize = s.size();
+		for (int i = newsize - 1, j = oldsize - 1; j < i; i--, j--)
+		{
+			if (!isspace(s[j]))
+			{
+				s[i] = s[j];
+			}
+			else
+			{
+				s[i] = '0';
+				s[i - 1] = '2';
+				s[i - 2] = '%';
+				i -= 2;
+			}
+		}
+		return s;
+	}
+};
