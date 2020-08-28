@@ -243,6 +243,104 @@ public:
 };
 */
 
+/*
+//两个链表的第一个公共节点
+class Solution {
+public:
+	ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
+		if (headA == NULL || headB == NULL)
+			return NULL;
+
+		//思路：求出两个链表长度，长链表先走两链表差值，两个链表再同时遍历，有相等值终止，即为第一个公共节点
+		ListNode* curA = headA;
+		ListNode* curB = headB;
+		int lengthA = 0, lengthB = 0; //链表长度
+		while (curA)
+		{
+			curA = curA->next;
+			lengthA++;
+		}
+		while (curB)
+		{
+			curB = curB->next;
+			lengthB++;
+		}
+
+		int gap = abs(lengthA - lengthB); //求两个链表差值
+		ListNode* Long = headA;
+		ListNode* Short = headB;
+		if (lengthA < lengthB) //让长链表为最长的链表
+		{
+			Long = headB;
+			Short = headA;
+		}
+		while (gap--) //长链表先走差值
+		{
+			Long = Long->next;
+		}
+		while (Long != Short)
+		{
+			Long = Long->next;
+			Short = Short->next;
+		}
+		return Long;
+	}
+};
+*/
+
+/*
+//只出现一次的字符
+class Solution {
+public:
+	char firstUniqChar(string s) {
+		unordered_map<char, int> m;
+		for (auto e : s)
+		{
+			m[e]++;
+		}
+
+		for (auto e : s)
+		{
+			if (m[e] == 1)
+				return e;
+		}
+		return ' ';
+
+	}
+};
+*/
+/*
+//两数和
+class Solution {
+public:
+	vector<int> twoSum(vector<int>& nums, int target) {
+		vector<int> v; //存放输出数据
+		int start = 0;
+		int end = nums.size() - 1;
+		for (int i = 0; i < nums.size(); i++)
+		{
+			//思路：首尾指针法，递增数组，若和大于target,则尾指针向前移动；若和小于target，则首指针向后移动，相等返回
+			int num = nums[start] + nums[end];
+			if (num == target)
+			{
+				v.push_back(nums[start]);
+				v.push_back(nums[end]);
+				return v;
+			}
+			else if (num > target)
+			{
+				--end;
+			}
+			else
+			{
+				++start;
+			}
+		}
+		return v;
+	}
+};
+*/
+
 
 
 
