@@ -180,8 +180,68 @@ public:
 //	}
 //};
 
+/*
+//公共祖先
+class Solution {
+public:
+	TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
+		if (root == NULL)
+			return NULL;
 
+		if (root == p || root == q)
+			return root;
 
+		TreeNode* left = lowestCommonAncestor(root->left, p, q);
+		TreeNode* right = lowestCommonAncestor(root->right, p, q);
+		//p在左数、q在右树
+		if (left != NULL && right != NULL)
+			return root;
+
+		//p q在左树
+		if (left != NULL)
+			return left;
+
+		//p q在右树
+		if (right != NULL)
+			return right;
+
+		return NULL;
+	}
+};
+*/
+
+/*
+//任意输出一个重复数
+class Solution {
+public:
+	int findRepeatNumber(vector<int>& nums) {
+		sort(nums.begin(), nums.end());
+		for (int i = 0; i < nums.size(); i++)
+		{
+			if (nums[i] == nums[i + 1])
+				return nums[i];
+		}
+		return -1;
+	}
+};
+
+//set
+class Solution {
+public:
+	int findRepeatNumber(vector<int>& nums) {
+		set<int> s;
+		for (auto e : nums)
+		{
+			if (s.count(e) != 0) //count: set中x元素的个数
+				return e;
+			else
+				s.insert(e);
+		}
+		return -1;
+
+	}
+};
+*/
 
 
 
