@@ -1,29 +1,29 @@
-/*
+ï»¿/*
 class Gift {
 public:
 	int getValue(vector<int> gifts, int n) {
 		// write code here
-		if (gifts.size() == 0 || n <= 0 ) //Îª¿ÕÊ±
+		if (gifts.size() == 0 || n <= 0 ) //ä¸ºç©ºæ—¶
 			return 0;
 
-		int result = gifts[0]; //Êı×éÖĞµÄÒ»¸öÊı
-		int times = 1;         //´ÎÊı
-		for (int i = 1; i < n; ++i) //±éÀúÊı×é
+		int result = gifts[0]; //æ•°ç»„ä¸­çš„ä¸€ä¸ªæ•°
+		int times = 1;         //æ¬¡æ•°
+		for (int i = 1; i < n; ++i) //éå†æ•°ç»„
 		{
-			if (times == 0)  //´ÎÊıÎª0Ê±£¬±£´æÏÂÒ»¸öÊı×Ö£¬´ÎÊıÉèÎª1
+			if (times == 0)  //æ¬¡æ•°ä¸º0æ—¶ï¼Œä¿å­˜ä¸‹ä¸€ä¸ªæ•°å­—ï¼Œæ¬¡æ•°è®¾ä¸º1
 			{
 				result = gifts[0];
 				times = 1;
 			}
 
-			else if (gifts[i] == result) //±éÀúµ½ÏÂÒ»¸öÊı£¬ÓëÖ®Ç°±£´æµÄÊıÒ»ÖÂ£¬´ÎÊı¼Ó1
+			else if (gifts[i] == result) //éå†åˆ°ä¸‹ä¸€ä¸ªæ•°ï¼Œä¸ä¹‹å‰ä¿å­˜çš„æ•°ä¸€è‡´ï¼Œæ¬¡æ•°åŠ 1
 				times++;
 
-			else   //±éÀúµ½ÏÂÒ»¸öÊı£¬ÓëÖ®Ç°±£´æµÄÊı²»Í¬£¬´ÎÊı¼õ1
+			else   //éå†åˆ°ä¸‹ä¸€ä¸ªæ•°ï¼Œä¸ä¹‹å‰ä¿å­˜çš„æ•°ä¸åŒï¼Œæ¬¡æ•°å‡1
 				times--;
 		}
 
-		//ÅĞ¶Ï¸ÃÊı³öÏÖµÄ´ÎÊıÔÚÊı×éÖĞÊÇ·ñ³¬¹ıÒ»°ë
+		//åˆ¤æ–­è¯¥æ•°å‡ºç°çš„æ¬¡æ•°åœ¨æ•°ç»„ä¸­æ˜¯å¦è¶…è¿‡ä¸€åŠ
 		int count = 0;
 		for (int i = 0; i < n; ++i)
 		{
@@ -42,7 +42,7 @@ public:
 */
 
 /*
-//Á´±íÄæĞò·µ»ØÊı×é
+//é“¾è¡¨é€†åºè¿”å›æ•°ç»„
 class Solution {
 public:
 	vector<int> reversePrint(ListNode* head) {
@@ -64,7 +64,7 @@ public:
 	}
 };
 
-//ÄæĞòÊı×é
+//é€†åºæ•°ç»„
 class Solution {
 public:
 	vector<int> reversePrint(ListNode* head) {
@@ -83,11 +83,11 @@ public:
 */
 
 /*
-//·´×ªÁ´±í
+//åè½¬é“¾è¡¨
 class Solution {
 public:
 	ListNode* reverseList(ListNode* head) {
-		//Í·²å
+		//å¤´æ’
 		ListNode* cur = head;
 		ListNode* newnode = NULL;
 
@@ -110,7 +110,7 @@ public:
 */
 
 /*
-//¶ş²æËÑË÷Ê÷µÄµÚk´ó½Úµã
+//äºŒå‰æœç´¢æ ‘çš„ç¬¬kå¤§èŠ‚ç‚¹
 class Solution {
 public:
 	vector<int> v;
@@ -125,7 +125,7 @@ public:
 	}
 
 	int kthLargest(TreeNode* root, int k) {
-		//Çó ¡°¶ş²æËÑË÷Ê÷µÚ k ´óµÄ½Úµã¡± ¿É×ª»¯ÎªÇó ¡°´ËÊ÷µÄÖĞĞò±éÀúµ¹ĞòµÄµÚ k ¸ö½Úµã
+		//æ±‚ â€œäºŒå‰æœç´¢æ ‘ç¬¬ k å¤§çš„èŠ‚ç‚¹â€ å¯è½¬åŒ–ä¸ºæ±‚ â€œæ­¤æ ‘çš„ä¸­åºéå†å€’åºçš„ç¬¬ k ä¸ªèŠ‚ç‚¹
 		Middle(root);
 
 		return v[v.size() - k];
@@ -133,7 +133,7 @@ public:
 };
 */
 
-//¼ÆËã¶ş½øÖÆ1µÄ¸öÊı
+//è®¡ç®—äºŒè¿›åˆ¶1çš„ä¸ªæ•°
 //class Solution {
 //public:
 //	int hammingWeight(uint32_t n) {
@@ -181,7 +181,7 @@ public:
 //};
 
 /*
-//¹«¹²×æÏÈ
+//å…¬å…±ç¥–å…ˆ
 class Solution {
 public:
 	TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
@@ -193,15 +193,15 @@ public:
 
 		TreeNode* left = lowestCommonAncestor(root->left, p, q);
 		TreeNode* right = lowestCommonAncestor(root->right, p, q);
-		//pÔÚ×óÊı¡¢qÔÚÓÒÊ÷
+		//påœ¨å·¦æ•°ã€qåœ¨å³æ ‘
 		if (left != NULL && right != NULL)
 			return root;
 
-		//p qÔÚ×óÊ÷
+		//p qåœ¨å·¦æ ‘
 		if (left != NULL)
 			return left;
 
-		//p qÔÚÓÒÊ÷
+		//p qåœ¨å³æ ‘
 		if (right != NULL)
 			return right;
 
@@ -211,7 +211,7 @@ public:
 */
 
 /*
-//ÈÎÒâÊä³öÒ»¸öÖØ¸´Êı
+//ä»»æ„è¾“å‡ºä¸€ä¸ªé‡å¤æ•°
 class Solution {
 public:
 	int findRepeatNumber(vector<int>& nums) {
@@ -232,7 +232,7 @@ public:
 		set<int> s;
 		for (auto e : nums)
 		{
-			if (s.count(e) != 0) //count: setÖĞxÔªËØµÄ¸öÊı
+			if (s.count(e) != 0) //count: setä¸­xå…ƒç´ çš„ä¸ªæ•°
 				return e;
 			else
 				s.insert(e);
@@ -244,17 +244,17 @@ public:
 */
 
 /*
-//Á½¸öÁ´±íµÄµÚÒ»¸ö¹«¹²½Úµã
+//ä¸¤ä¸ªé“¾è¡¨çš„ç¬¬ä¸€ä¸ªå…¬å…±èŠ‚ç‚¹
 class Solution {
 public:
 	ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
 		if (headA == NULL || headB == NULL)
 			return NULL;
 
-		//Ë¼Â·£ºÇó³öÁ½¸öÁ´±í³¤¶È£¬³¤Á´±íÏÈ×ßÁ½Á´±í²îÖµ£¬Á½¸öÁ´±íÔÙÍ¬Ê±±éÀú£¬ÓĞÏàµÈÖµÖÕÖ¹£¬¼´ÎªµÚÒ»¸ö¹«¹²½Úµã
+		//æ€è·¯ï¼šæ±‚å‡ºä¸¤ä¸ªé“¾è¡¨é•¿åº¦ï¼Œé•¿é“¾è¡¨å…ˆèµ°ä¸¤é“¾è¡¨å·®å€¼ï¼Œä¸¤ä¸ªé“¾è¡¨å†åŒæ—¶éå†ï¼Œæœ‰ç›¸ç­‰å€¼ç»ˆæ­¢ï¼Œå³ä¸ºç¬¬ä¸€ä¸ªå…¬å…±èŠ‚ç‚¹
 		ListNode* curA = headA;
 		ListNode* curB = headB;
-		int lengthA = 0, lengthB = 0; //Á´±í³¤¶È
+		int lengthA = 0, lengthB = 0; //é“¾è¡¨é•¿åº¦
 		while (curA)
 		{
 			curA = curA->next;
@@ -266,15 +266,15 @@ public:
 			lengthB++;
 		}
 
-		int gap = abs(lengthA - lengthB); //ÇóÁ½¸öÁ´±í²îÖµ
+		int gap = abs(lengthA - lengthB); //æ±‚ä¸¤ä¸ªé“¾è¡¨å·®å€¼
 		ListNode* Long = headA;
 		ListNode* Short = headB;
-		if (lengthA < lengthB) //ÈÃ³¤Á´±íÎª×î³¤µÄÁ´±í
+		if (lengthA < lengthB) //è®©é•¿é“¾è¡¨ä¸ºæœ€é•¿çš„é“¾è¡¨
 		{
 			Long = headB;
 			Short = headA;
 		}
-		while (gap--) //³¤Á´±íÏÈ×ß²îÖµ
+		while (gap--) //é•¿é“¾è¡¨å…ˆèµ°å·®å€¼
 		{
 			Long = Long->next;
 		}
@@ -289,7 +289,7 @@ public:
 */
 
 /*
-//Ö»³öÏÖÒ»´ÎµÄ×Ö·û
+//åªå‡ºç°ä¸€æ¬¡çš„å­—ç¬¦
 class Solution {
 public:
 	char firstUniqChar(string s) {
@@ -310,16 +310,16 @@ public:
 };
 */
 /*
-//Á½ÊıºÍ
+//ä¸¤æ•°å’Œ
 class Solution {
 public:
 	vector<int> twoSum(vector<int>& nums, int target) {
-		vector<int> v; //´æ·ÅÊä³öÊı¾İ
+		vector<int> v; //å­˜æ”¾è¾“å‡ºæ•°æ®
 		int start = 0;
 		int end = nums.size() - 1;
 		for (int i = 0; i < nums.size(); i++)
 		{
-			//Ë¼Â·£ºÊ×Î²Ö¸Õë·¨£¬µİÔöÊı×é£¬ÈôºÍ´óÓÚtarget,ÔòÎ²Ö¸ÕëÏòÇ°ÒÆ¶¯£»ÈôºÍĞ¡ÓÚtarget£¬ÔòÊ×Ö¸ÕëÏòºóÒÆ¶¯£¬ÏàµÈ·µ»Ø
+			//æ€è·¯ï¼šé¦–å°¾æŒ‡é’ˆæ³•ï¼Œé€’å¢æ•°ç»„ï¼Œè‹¥å’Œå¤§äºtarget,åˆ™å°¾æŒ‡é’ˆå‘å‰ç§»åŠ¨ï¼›è‹¥å’Œå°äºtargetï¼Œåˆ™é¦–æŒ‡é’ˆå‘åç§»åŠ¨ï¼Œç›¸ç­‰è¿”å›
 			int num = nums[start] + nums[end];
 			if (num == target)
 			{
@@ -337,6 +337,105 @@ public:
 			}
 		}
 		return v;
+	}
+};
+*/
+
+/*
+//è¿ç»­å’Œ
+class Solution {
+public:
+	vector<vector<int>> findContinuousSequence(int target) {
+
+		//æ»‘åŠ¨çª—å£ï¼š
+		//é‡Œè¦æœ‰ä¸€ä¸ªåŒºé—´çš„æ¦‚å¿µï¼Œè¿™é‡Œçš„åŒºé—´æ˜¯(1, 2, 3, ..., target / 2) 
+		//target / 2ï¼šå°‘å«æœ‰ä¸¤ä¸ªæ•°ï¼Œä¾‹å¦‚15ï¼Œ15/2ä¸º7ï¼Œå³æœ€åä¸€ç»„å·¦è¾¹ç•Œä¸º7ï¼Œæ’é™¤åªä¸º15çš„å€¼
+		//æ»‘åŠ¨çª—å£æ¨¡æ¿ï¼Œiæ˜¯çª—å£å·¦è¾¹ç•Œï¼Œjæ˜¯çª—å£å³è¾¹ç•Œï¼Œçª—å£ä¸­çš„å€¼ä¸€å®šæ˜¯è¿ç»­å€¼
+		//å½“çª—å£ä¸­æ•°å­—å’Œå°äºtargetæ—¶ï¼Œjå³ç§»; å¤§äºtargetæ—¶ï¼Œiå³ç§»; ç­‰äºtargetæ—¶ä¸ºä¸€ç»„è§£
+		vector<vector<int>> v; //å­˜æ”¾æœ€åæ•°æ®
+		int i = 1;
+		int j = 1;
+		int sum = 0;
+		while (i <= target / 2)
+		{
+			if (sum < target) //å³çª—å£å‘å³ç§»åŠ¨
+			{
+				sum += j;
+				j++;
+			}
+			else if (sum > target) //å·¦çª—å£å‘å³ç§»åŠ¨
+			{
+				sum -= i;
+				i++;
+			}
+			else
+			{
+				vector<int> tmp;
+				for (int k = i; k < j; k++)
+					tmp.push_back(k);
+
+				v.push_back(tmp);
+
+				sum -= i; //é‡æ–°å†è®¾ç½®ä¸‹ä¸€æ¬¡çª—å£
+				i++;
+			}
+		}
+		return v;
+	}
+};
+*/
+
+/*
+class Solution {
+public:
+	int maxSubArray(vector<int>& nums) {
+		//åŠ¨æ€è§„åˆ’
+		int dp(nums[0]); //åˆå§‹çŠ¶æ€
+		int num = dp;
+		for (int i = 1; i < nums.size(); i++)
+		{
+			dp = max(dp + nums[i], nums[i]); //çŠ¶æ€è½¬ç§»æ–¹ç¨‹
+			num = max(dp, num);
+		}
+
+		return num;
+	}
+};
+
+class Solution {
+public:
+	int maxSubArray(vector<int>& nums) {
+		int num = nums[0];
+		int sum = 0;
+		for (int i = 0; i < nums.size(); i++)
+		{
+			if (sum < 0) //æ¯”è¾ƒä¹‹å‰å’Œä¸å½“å‰å€¼å¤§å°
+				sum = nums[i];
+			else
+				sum += nums[i];
+
+			if (sum > num)
+				num = sum;
+		}
+		return num;
+	}
+};
+*/
+
+
+/*
+//çº¦ç‘Ÿå¤«ç¯
+class Solution {
+public:
+	int lastRemaining(int n, int m) {
+		//çº¦ç‘Ÿå¤«ç¯
+		//é€’æ¨å…¬å¼ï¼šf(N,M)=(f(Nâˆ’1,M)+M)%n
+		int p = 0;
+		for (int i = 2; i <= n; i++)
+		{
+			p = (p + m) % i;
+		}
+		return p;
 	}
 };
 */
