@@ -449,6 +449,81 @@ public:
 
 
 
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+int main()
+{
+	vector<int> v;
+	int x = 0;
+	for (int i = 1000; i <= 100000; i++)
+	{
+		int tmp = i;
+		for (int j = 2; j <= sqrt(i); j++)
+		{
+			if (tmp % j != 0) //素数
+			{
+				while (i)
+				{
+					x = x * 10 + i % 10;
+					i = i / 10;
+
+					if (tmp == i)
+					{
+						v.push_back(tmp);
+					}
+				}
+			}
+		}
+		sort(v.begin(), v.end());
+	}
+
+	system("pause");
+	return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
