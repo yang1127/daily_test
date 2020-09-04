@@ -477,9 +477,93 @@ int main()
 }
 */
 
+/*
+//删除公共字符
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main()
+{
+	string s1;
+	string s2;
+	getline(cin, s1);
+	getline(cin, s2);
+	char arr[256] = { 0 };
+	for (int i = 0; i < s2.length(); i++)
+	{
+		arr[s2[i]] = 1; //将S2的下标置为1
+	}
+	string s = "";
+	for (int i = 0; i < s1.length(); i++)
+	{
+		if (arr[s1[i]] == 0)
+		{
+			s += s1[i];
+		}
+	}
+	cout << s << endl;
+
+	return 0;
+}
+*/
+
+/*
+//第一个唯一出现的字符
+class Solution {
+public:
+	int firstUniqChar(string s) {
+		unordered_map<char, int> m; //key value
+		for (auto e : s)
+		{
+			m[e]++;
+		}
+
+		for (int i = 0; i < s.size(); i++)
+		{
+			if (m[s[i]] == 1)
+				return i;
+		}
+
+		return -1;
+	}
+};
+*/
 
 
+/*
+//无重复最长子串
+class Solution {
+public:
+	int lengthOfLongestSubstring(string s) {
+		//[start, end)
+		int start = 0, end = 0; //设置滑动窗口边界下标
+		int maxlength = 0, length = 0;
+		while (end < s.size())
+		{
+			char tmp = s[end]; //使用右窗口边界检验是否有重复字符
+			for (int i = start; i < end; i++) //每次遍历[start, end)，看是否与end有重复字符
+			{
+				if (tmp == s[i])
+				{
+					start = i + 1; //重复时，左窗口移动到重复位置的下一个位置；
+					length = end - start;
+					break; //滑动窗口已改变新的start，继续向后查找
+				}
+			}
 
+			end++; //在没有遇到重复字符时，窗口向右滑动
+			length++;
+			if (maxlength < length)
+				maxlength = length;
+
+		}
+		return maxlength;
+
+	}
+};
+*/
 
 
 
