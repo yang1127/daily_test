@@ -60,3 +60,56 @@
 //	return 0;
 //}
 
+/*
+//无重复最长子串
+class Solution {
+public:
+	int lengthOfLongestSubstring(string s) {
+		//哈希+左右指针
+		unordered_map<char, int> hash;
+		int length = 0;
+
+		for (int i = 0, j = 0; j < s.size(); j++)
+		{
+			hash[s[j]]++; //将哈希表中s[j]的计数 + 1, 即hash[s[j]] ++, 维护右指针向后移动
+			while (hash[s[j]] > 1)
+			{
+				hash[s[i++]]--; //左指针向左移动，且左指针所指向的数的计数-1
+			}
+			length = max(length, j - i + 1);
+		}
+		return length;
+	}
+};
+*/
+
+/*
+class Solution {
+public:
+	int longestConsecutive(vector<int>& nums) {
+		unordered_set<int> un_set;
+		for (auto e : nums)
+		{
+			un_set.insert(e);  //放到哈希中，去重
+		}
+
+		int maxlength = 0, length = 0;
+		for (auto e : un_set) //遍历un_set
+		{
+			if (!(un_set.count(e - 1))) //判断这个数的前一个是否在哈希中
+			{
+				length = 1;
+				int num = e;
+
+				while (un_set.count(num + 1)) //找该数为起始的最长连续序列，连续的某数不在哈希中，则终止
+				{
+					num += 1;
+					length += 1;
+				}
+			}
+			maxlength = max(maxlength, length);
+		}
+		return maxlength;
+	}
+};
+*/
