@@ -113,3 +113,84 @@ public:
 	}
 };
 */
+
+//快排
+#include <iostream>
+
+using namespace std;
+
+//三数取中
+int MidNum(int* a, int begin, int end)
+{
+	int mid = (begin + end) >> 1;
+	if (a[begin] < a[end])
+	{
+		if (a[end] < a[mid])
+			return end;
+		else if (a[begin] < a[mid])
+			return mid;
+		else
+			return begin;
+	}
+	else  // a[begin] > a[end]
+	{
+		if (a[begin] < a[mid])
+			return begin;
+		else if (a[end] > a[mid])
+			return end;
+		else
+			return mid;
+	}
+}
+
+void Swap(int* p1, int* p2)
+{
+	int tmp = *p2;
+	*p2 = *p1;
+	*p1 = tmp;
+}
+
+int Sort(int* a, int begin, int end)
+{
+	int mid = MidNum(a, begin, end);
+	Swap(&a[mid], &a[end]);
+
+	int key = a[end];
+	while (begin < end)
+	{
+		while (begin < end && a[begin] <= key)
+			++begin;
+		a[end] = a[begin];
+
+		while (begin < end && a[end] >= key)
+			--end;
+		a[begin] = a[end];
+	}
+	a[begin] = key;
+
+	return begin;
+}
+
+void QuickSort(int* a, int begin, int end)
+{
+	if (begin >= end)
+		return;
+
+	int key_index = Sort(a, begin, end);
+	QuickSort(a, begin, key_index - 1);
+	QuickSort(a, key_index + 1, end);
+}
+
+int main()
+{
+	int a[] = { 8, 5, 2, 7, 9, 6, 1, 3 };
+	QuickSort(a, 0, sizeof(a) / sizeof(a[0]) - 1);
+	for (auto e : a)
+	{
+		cout << e << " ";
+	}
+	cout << endl;
+
+	system("pause");
+	return 0;
+}
