@@ -114,6 +114,8 @@ public:
 };
 */
 
+/*
+
 //快排
 #include <iostream>
 
@@ -194,3 +196,72 @@ int main()
 	system("pause");
 	return 0;
 }
+*/
+
+//2020/09/10 深信服
+//积水问题
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+int main()
+{
+	int w, l;
+	cin >> w >> l;
+	vector<int> v(l);
+	for (int i = 0; i < l; i++)
+	{
+		cin >> v[i];
+	}
+
+	if (v.size() == 0)
+		return 0;
+
+	int left = 0;
+	int right = l - 1;
+	int minleft = v[left];
+	int minright = v[right];
+	int water = 0;
+	int relwater = 0;
+
+	while (left <= right)
+	{
+		minleft = min(v[left], minleft); //当前高度与左边最低高度
+		int minright = min(v[right], minright);
+
+		if (minleft < minright)
+		{
+			water += v[left] - minleft;
+			left++;
+		}
+		else
+		{
+			water += v[right] - minright;
+			right--;
+		}
+	}
+
+	relwater = water * w;
+	cout << relwater << endl;
+
+	system("pause");
+	return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
