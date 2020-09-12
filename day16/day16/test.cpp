@@ -198,6 +198,7 @@ int main()
 }
 */
 
+/*
 //2020/09/10 深信服
 //积水问题
 #include <iostream>
@@ -249,6 +250,48 @@ int main()
 	system("pause");
 	return 0;
 }
+*/
+
+
+//9.12 网易-有道
+
+//最多的回文
+//暴力法
+#include <iostream>
+#include <string>
+#include <algorithm>
+
+using namespace std;
+
+int main()
+{
+	string s;
+	while (cin >> s)
+	{
+		int count = 0;
+		int n = s.size();
+
+		string rev(s);
+		reverse(rev.begin(), rev.end());
+		for (int i = 0; i < n - 1; i++)
+		{
+			for (int j = i + 1; j < n; j++)
+			{
+				string tmp1 = s.substr(i, (j - i) + 1); //substr(pos, n) pos:从该位置起 n:子串长度
+				string tmp2 = rev.substr((n - j) - 1, (j - i) + 1);
+				if (tmp1 == tmp2)
+					count++;
+			}
+		}
+
+		cout << count << endl;
+	}
+
+	system("pause");
+	return 0;
+}
+
+
 
 
 
