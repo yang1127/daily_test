@@ -253,6 +253,7 @@ int main()
 */
 
 
+/*
 //9.12 网易-有道
 
 //最多的回文
@@ -290,8 +291,123 @@ int main()
 	system("pause");
 	return 0;
 }
+*/
 
 
+//9.13 滴滴
+//string不能处理
+/*
+#include <iostream>
+#include <string>
+#include <algorithm>
+
+using namespace std;
+
+int main()
+{
+	int n;
+	string s;
+	cin >> n;
+	cin >> s;
+	int count = 0;
+	string tmp = "";
+	string tmp1 = "";
+	string rel = "";
+	for (int i = 0; i < s.size(); i += n)
+	{
+		int falg = 0;
+		tmp += s[i];
+		if ((i + 1) % n == 0)
+		{
+			count++;
+			falg = 1;
+		}
+		if (falg == 1)
+		{
+			reverse(tmp.begin(), tmp.end());
+			rel += tmp;
+			tmp.clear();
+		}
+		if ((s.size() - count * n) < n)
+		{
+			tmp1 += tmp;
+		}
+		tmp = s.substr(i, n);
+		reverse(tmp.begin(), tmp.end());
+		rel += tmp;
+
+	}
+	reverse(tmp1.begin(), tmp1.end());
+	rel += tmp1;
+
+	cout << rel << endl;
+
+	system("pause");
+	return 0;
+}
+*/
+
+/*
+#include <iostream>
+#include <string>
+#include <algorithm>
+
+using namespace std;
+
+int main()
+{
+	int n;
+	string s;
+	cin >> n;
+	cin >> s;
+	string tmp = "";
+	string tmp1 = "";
+	string rel = "";
+	int count = s.size() % n;
+	int i = 0;
+	for (; i < s.size(); i += n)
+	{
+		tmp = s.substr(i, n);
+		reverse(tmp.begin(), tmp.end());
+		rel += tmp;
+	}
+	tmp1 = s.substr(count * n, n - count * n);
+	reverse(tmp1.begin(), tmp1.end());
+	rel += tmp1;
+
+	cout << rel << endl;
+
+	system("pause");
+	return 0;
+}
+*/
+
+/*
+#include <iostream>
+#include <string>
+#include <algorithm>
+
+using namespace std;
+
+int main()
+{
+	int n;
+	cin >> n;
+	cin.ignore();
+	string s;
+	getline(cin, s);
+	int len = s.size() % n;
+	int i = 0;
+	for (; i < s.size() - len; i += n)
+	{
+		reverse(s.begin() + i, s.end() + i + n);
+	}
+
+	reverse(s.begin() + i, s.end());
+	cout << s << endl;
+	return 0;
+}
+*/
 
 
 
