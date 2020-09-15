@@ -410,6 +410,64 @@ int main()
 */
 
 
+#include <iostream>
+#include <vector>
+#include <numeric>
+#include <limits>
+#include <algorithm>
+
+using namespace std;
+
+
+vector < int > primeFactorization(int num) {
+	vector<int> v;
+	for (int i = 2; i <= sqrt(num); i++) {
+		while (sqrt(num) > i) {
+			if (num % i == 0) {
+				v.push_back(i);
+				num = num / i;
+			}
+		}
+	}
+	return v;
+}
+
+
+int main() {
+	vector< int > res;
+
+	int _num;
+	cin >> _num;
+	cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+
+
+	res = primeFactorization(_num);
+	for (int res_i = 0; res_i < res.size(); res_i++) {
+		cout << res[res_i] << endl;;
+	}
+
+	return 0;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
