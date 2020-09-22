@@ -143,55 +143,59 @@
 //	return 0;
 //}
 
-#include <iostream>
-#include <string>
+//#include <iostream>
+//#include <string>
+//
+//using namespace std;
+//
+//int main()
+//{
+//	int n;
+//	cin >> n;
+//	while (n)
+//	{
+//		string s;
+//		cin >> s;
+//		int flag = 0;
+//		char arr[256] = { 0 };
+//
+//		string tmp = s.substr(0, 3);
+//		for (int i = 0; i < tmp.size(); i++)
+//		{
+//			arr[tmp[i]]++;
+//		}
+//
+//		for (int j = 3; j < s.size(); j += 3)
+//		{
+//			string tmp1 = "";
+//			tmp1 = s.substr(j, 3);
+//
+//			string tmp2 = "";
+//			for (int k = 0; k < tmp1.size(); j++)
+//			{
+//				if (arr[tmp[k]] == 0)
+//					tmp2 += tmp1[k];
+//			}
+//			int count = tmp1.size() - tmp2.size();
+//			if (count == 2)
+//				flag = 1;
+//			else
+//				flag = 0;
+//			
+//		}
+//
+//		if (flag == 1)
+//			cout << "Yes" << endl;
+//		else
+//			cout << "No" << endl;
+//
+//		n--;
+//	}
+//
+//	system("pause");
+//	return 0;
+//}
 
-using namespace std;
 
-int main()
-{
-	int n;
-	cin >> n;
-	while (n)
-	{
-		string s;
-		cin >> s;
-		int flag = 0;
-		char arr[256] = { 0 };
 
-		string tmp = s.substr(0, 3);
-		for (int i = 0; i < tmp.size(); i++)
-		{
-			arr[tmp[i]]++;
-		}
 
-		for (int j = 3; j < s.size(); j += 3)
-		{
-			string tmp1 = "";
-			tmp1 = s.substr(j, 3);
-
-			string tmp2 = "";
-			for (int k = 0; k < tmp1.size(); j++)
-			{
-				if (arr[tmp[k]] == 0)
-					tmp2 += tmp1[k];
-			}
-			int count = tmp1.size() - tmp2.size();
-			if (count == 2)
-				flag = 1;
-			else
-				flag = 0;
-			
-		}
-
-		if (flag == 1)
-			cout << "Yes" << endl;
-		else
-			cout << "No" << endl;
-
-		n--;
-	}
-
-	system("pause");
-	return 0;
-}
