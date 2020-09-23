@@ -196,6 +196,87 @@
 //	return 0;
 //}
 
+//2020/9/23 去哪儿网
+//#include <iostream>
+//using namespace std;
+//
+//int main()
+//{
+//	int n;
+//	cin >> n;
+//
+//	int *dp = new int[n + 1]; //开空间
+//	dp[0] = 1;
+//	dp[1] = 1;
+//	dp[2] = 2;
+//	for (int i = 2; i <= n; i++)
+//	{
+//		dp[i] = dp[i - 1] + dp[i - 2];
+//	}
+//	cout << dp[n] << endl;
+//
+//	return 0;
+//}
 
+
+
+//删除有序列表中重复的元素
+//class Solution {
+//public:
+//	ListNode *deleteDuplicates(ListNode *head) {
+//		if (head == NULL)
+//			return head;
+//
+//		ListNode *cur = head;
+//
+//		while (cur->next != NULL)
+//		{
+//			if (cur->val == cur->next->val)
+//			{
+//				cur->next = cur->next->next;
+//			}
+//			else
+//			{
+//				cur = cur->next;
+//			}
+//		}
+//		return head;
+//	}
+//};
+//
+//#include <iostream>
+//#include <string>
+//#include <unordered_map>
+//using namespace std;
+//
+//int main()
+//{
+//	string s;
+//	cin >> s;
+//
+//	if (s.empty())
+//		return 0;
+//
+//	unordered_map<char, int> um;
+//	for (char e : s)
+//	{
+//		++um[e];
+//	}
+//
+//	int num = um.size();
+//	int count = 0;
+//	for (auto e : um)
+//	{
+//		cout << e.first << "_" << e.second;
+//		count++;
+//		
+//		if (count < num)
+//			cout << "_";
+//	}
+//	cout << endl;
+//
+//	system("pause");
+//	return 0;
+//}
 
 
