@@ -280,3 +280,129 @@
 //}
 
 
+////9.24 美图
+//#include <iostream>
+//#include <string>
+//#include <unordered_map>
+//
+//using namespace std;
+//
+//int main()
+//{
+//	string s;
+//	cin >> s;
+//	string tmp = "";
+//	for (int i = 0; i < s.size(); i++)
+//	{
+//		if ((s[i] >= 'a' && s[i] <= 'z') || (s[i] >= 'A' && s[i] <= 'Z'))
+//			tmp += s[i];
+//	}
+//
+//	unordered_map<char, int> m;
+//	for (char e : tmp)
+//	{
+//		m[e]++;
+//	}
+//
+//	for (auto e : m)
+//	{
+//		cout << e.first << e.second;
+//	}
+//
+//	system("pause");
+//	return 0;
+//}
+
+
+//#include <iostream>
+//
+//using namespace std;
+//
+//int main()
+//{
+//	int h, l;
+//	while (cin >> h >> l)
+//	{
+//		int count = 0;
+//		if (h < l)
+//		{
+//			int num = 0;
+//			int tmp = h;
+//			while (num <= l)
+//			{
+//				num = tmp + h;
+//				count++;
+//				h = h / 2;
+//			}
+//			cout << count << endl;
+//		}
+//		else if (h == l)
+//			cout << 1 << endl;
+//		else
+//			cout << "no" << endl;
+//	}
+//
+//	system("pause");
+//	return 0;
+//}
+
+
+
+
+//2020/09/25  
+//质因素个数
+#include <iostream>
+#include <math.h>
+
+using namespace std;
+
+int main()
+{
+	int n;
+	while (cin >> n)
+	{
+		int count = 0;
+		for (int i = 2; i <= sqrt(n); i++) {
+			while (n % i == 0)
+			{
+				n /= i;
+				count++;
+			}
+		}
+
+		if (n > 1)
+			count++;
+
+		cout << count << endl;
+	}
+
+	system("pause");
+	return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
