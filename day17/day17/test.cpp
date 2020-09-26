@@ -347,40 +347,170 @@
 //}
 
 
+////2020/09/25  
+////质因素个数
+//#include <iostream>
+//#include <math.h>
+//
+//using namespace std;
+//
+//int main()
+//{
+//	int n;
+//	while (cin >> n)
+//	{
+//		int count = 0;
+//		for (int i = 2; i <= sqrt(n); i++) {
+//			while (n % i == 0)
+//			{
+//				n /= i;
+//				count++;
+//			}
+//		}
+//
+//		if (n > 1)
+//			count++;
+//
+//		cout << count << endl;
+//	}
+//
+//	system("pause");
+//	return 0;
+//}
+//
 
 
-//2020/09/25  
-//质因素个数
-#include <iostream>
-#include <math.h>
+//2020/09/26 
+//#include <iostream>
+//#include <algorithm>
+//
+//using namespace std;
+//
+//int main()
+//{
+//	int n;
+//	while (cin >> n)
+//	{
+//		int* dp = new int(n + 1); //开数组
+//		for (int i = 0; i <= n; i++)
+//			dp[i] = i - 1;
+//
+//		dp[1] = 1;
+//
+//		for (int i = 1; i <= n; i++)
+//		{
+//			for (int j = 1; i + j <= n; j++)
+//				dp[i + j] = max(dp[i + j], max(dp[i] * j, i * j));
+//		}
+//		cout << dp[n] << endl;
+//	}
+//
+//	system("pause");
+//	return 0;
+//}
+//
+//#define _CRT_SECURE_NO_WARNINGS 1
+//
+//#include <iostream>
+//#include <vector>
+//
+//using namespace std;
+//
+////int Find(int key, int* arr, int left, int right)
+//int Find(int key, vector<int> &v, int left, int right)
+//{
+//	if (left > right)
+//		return -1;
+//
+//	//int mid = left + (right - left) / 2;
+//
+//	//if (key < arr[mid])
+//	//	return Find(key, arr, left, mid - 1);
+//	//else if (key > arr[mid])
+//	//	return Find(key, arr, mid + 1, right);
+//	//else
+//	//	return mid;
+//
+//	int mid = left + (right - left) / 2;
+//
+//	if (key < v[mid])
+//		return Find(key, v, left, mid - 1);
+//	else if (key > v[mid])
+//		return Find(key, v, mid + 1, right);
+//	else
+//		return mid;
+//}
+//
+//int main()
+//{
+//	int n;
+//	while (cin >> n)
+//	{
+//		vector<int> v(n);
+//		//int arr[] = {0};
+//		//for (int i = 0; i < n; i++)
+//		//{
+//		//	scanf("%d ", &arr);
+//		//}
+//		for (int i = 0; i < n; i++)
+//		{
+//			cin >> v[i];
+//		}
+//
+//		int num;
+//		//scanf("%d ", &num);
+//		//int rel = Find(num, arr, 0, sizeof(arr) / sizeof(arr[0]));
+//		cin >> num;
+//		int rel = Find(num, v, 0, v.size()- 1);
+//
+//		cout << rel << endl;
+//	}
+//
+//	system("pause");
+//	return 0;
+//}
 
-using namespace std;
 
-int main()
-{
-	int n;
-	while (cin >> n)
-	{
-		int count = 0;
-		for (int i = 2; i <= sqrt(n); i++) {
-			while (n % i == 0)
-			{
-				n /= i;
-				count++;
-			}
-		}
-
-		if (n > 1)
-			count++;
-
-		cout << count << endl;
-	}
-
-	system("pause");
-	return 0;
-}
-
-
+//#include <iostream>
+//#include <vector>
+//
+//using namespace std;
+//
+//int Find(int key, vector<int> &v, int left, int right)
+//{
+//	if (left > right)
+//		return -1;
+//
+//	int mid = left + (right - left) / 2;
+//
+//	if (key < v[mid])
+//		return Find(key, v, left, mid - 1);
+//	else if (key > v[mid])
+//		return Find(key, v, mid + 1, right);
+//	else
+//		return mid;
+//}
+//
+//int main()
+//{
+//	int n;
+//	while (cin >> n)
+//	{
+//		vector<int> v(n);
+//		for (int i = 0; i < n; i++)
+//			cin >> v[i];
+//
+//		int num;
+//
+//		cin >> num;
+//		int rel = Find(num, v, 0, v.size() - 1);
+//
+//		cout << rel << endl;
+//	}
+//
+//	system("pause");
+//	return 0;
+//}
 
 
 
