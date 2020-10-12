@@ -63,26 +63,54 @@
 //}
 
 
-#include <iostream> 
-#include <string> 
+//#include <iostream> 
+//#include <string> 
+//
+//using namespace std;
+//
+//#define ADD(x, y) ((x) + (y))  //任意两边和
+//#define CMP(x, y) ((x) > (y))  //任意两边和与第三边进行比较
+//
+//int main()
+//{
+//	double a, b, c;
+//	while (cin >> a >> b >> c)
+//	{
+//		//对两边进行求和与第三遍进行比较 
+//		if (CMP(ADD(a, b), c) && CMP(ADD(b, c), a) && CMP(ADD(a, c), b))
+//			cout << "Yes" << endl;
+//		else
+//			cout << "No" << endl;
+//	}
+//
+//	system("pause");
+//	return 0;
+//}
 
-using namespace std;
-
-#define ADD(x, y) ((x) + (y))  //任意两边和
-#define CMP(x, y) ((x) > (y))  //任意两边和与第三边进行比较
-
-int main()
-{
-	double a, b, c;
-	while (cin >> a >> b >> c)
-	{
-		//对两边进行求和与第三遍进行比较 
-		if (CMP(ADD(a, b), c) && CMP(ADD(b, c), a) && CMP(ADD(a, c), b))
-			cout << "Yes" << endl;
-		else
-			cout << "No" << endl;
-	}
-
-	system("pause");
-	return 0;
-}
+//#include <iostream>
+//#include <vector>
+//using namespace std;
+//
+//bool fun(vector<int> v)
+//{
+//	for (int j = 0; j < v.size() - 1; j++)
+//	{
+//		if (v[j] > v[j + 1])
+//			return false;
+//	}
+//	return true;
+//}
+//
+//int main()
+//{
+//	int n;
+//	cin >> n;
+//	vector<int> v(n);
+//	for (int i = 0; i < n; i++)
+//		cin >> v[i];
+//
+//	fun(v);
+//
+//	system("pause");
+//	return 0;
+//}
