@@ -114,3 +114,52 @@
 //	system("pause");
 //	return 0;
 //}
+
+
+#include <iostream>
+#include <algorithm>
+#include <math.h>
+#include <string>
+using namespace std;
+
+int fun(string s, int i, int flag)
+{
+	int num = 0;
+	while (s[i] - '0' >= 0 && s[i] - '0' <= 9)
+	{
+		num = num * 10 + (s[i++] - '0');
+		if (num * flag > pow(2, 31) - 1)
+			return INT_MAX;
+		if (num * flag < pow(2, 31))
+			return INT_MIN;
+	}
+	num = num * flag;
+	return num;
+}
+
+int atoi(string s)
+{
+	if (s.size() == 0)
+		return 0;
+
+	int i = 0;
+	int flag = 0;
+	while (s[i] == ' ')
+		i++;
+
+	if (s[i] == '+')
+	{
+		flag = 0;
+		
+	}
+}
+
+int main()
+{
+	string s;
+	getline(cin, s);
+
+	atoi(s);
+
+	return 0;
+}
